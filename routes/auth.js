@@ -4,7 +4,7 @@ const admin = require("../firebase");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-router.post("/google-login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { idToken, email, name, providerUserId, profileUrl } = req.body;  // ← extract profileUrl
 
@@ -28,7 +28,7 @@ router.post("/google-login", async (req, res) => {
         email:      email || decodedToken.email,
         name:       name  || decodedToken.name,
         profileUrl: profileUrl || decodedToken.picture,  // ← Firebase gives photo as `picture`
-        provider: "google",
+        provider: req.body.provider || "google",
       });
     }
 
@@ -53,7 +53,7 @@ router.post("/google-login", async (req, res) => {
   }
 });
 
-router.post("/google-signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const { auth, onboarding, meta } = req.body;
 
