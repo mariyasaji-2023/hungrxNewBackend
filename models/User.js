@@ -30,6 +30,24 @@ const userSchema = new mongoose.Schema(
       },
     },
 
+    // Subscription
+    subscription: {
+      plan:               { type: String, default: "free" },
+      eligibleFreeTrail:  { type: Boolean, default: true },
+      trialStartDate:     { type: Date },
+      trialDays:          { type: Number, default: 7 },
+      freeTrailExpired:   { type: Boolean, default: false },
+      subscriptionExpired:{ type: Boolean, default: false },
+    },
+
+    // Nutrition Goals
+    nutritionGoals: {
+      calories: { type: Number, default: 2000 },
+      protein:  { type: Number, default: 150 },
+      carbs:    { type: Number, default: 250 },
+      fat:      { type: Number, default: 65 },
+    },
+
     // Meta
     meta: {
       platform:   { type: String },

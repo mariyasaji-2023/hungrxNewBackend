@@ -8,3 +8,4 @@ sample.json
 starbucks_migration.log
 starbucks_migration.py
 test-mongo.js
+sweetgreen_migration

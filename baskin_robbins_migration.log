@@ -1,0 +1,312 @@
+2026-04-19 11:59:17,774 [INFO] Target     : Baskin-Robbins
+2026-04-19 11:59:17,774 [INFO] Documents  : 1
+2026-04-19 11:59:17,774 [INFO] Dry run    : True
+2026-04-19 11:59:17,775 [INFO] ============================================================
+2026-04-19 11:59:19,025 [INFO] 
+============================================================
+2026-04-19 11:59:19,026 [INFO] Restaurant: Baskin-Robbins
+2026-04-19 11:59:19,026 [INFO] ============================================================
+2026-04-19 11:59:19,026 [INFO]   Logo: https://res.cloudinary.com/dfwgrmy5h/image/upload/v1738982063/vjtmtzmdvve7c8of0nhx.png
+2026-04-19 11:59:19,026 [INFO]   [DRY RUN] Would migrate logo.
+2026-04-19 11:59:19,027 [INFO] 
+  Category: Flavors
+2026-04-19 11:59:19,027 [INFO]     Dish: Cinnamon Roll
+2026-04-19 11:59:19,055 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,056 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,056 [INFO]     Dish: Non-Dairy Cookies 'n Crème
+2026-04-19 11:59:19,057 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,058 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,058 [INFO]     Dish: Chocolate Almond
+2026-04-19 11:59:19,059 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,060 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,061 [INFO]     Dish: TWIX® Caramel Crunch
+2026-04-19 11:59:19,062 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,062 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,063 [INFO]     Dish: Very Berry Strawberry
+2026-04-19 11:59:19,064 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,065 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,065 [INFO]     Dish: Vanilla Ice Cream
+2026-04-19 11:59:19,066 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,067 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,067 [INFO]     Dish: Baseball Nut®
+2026-04-19 11:59:19,068 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,069 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,069 [INFO]     Dish: No Sugar Added Caramel Turtle Truffle
+2026-04-19 11:59:19,071 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,072 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,072 [INFO]     Dish: Cherries Jubilee
+2026-04-19 11:59:19,074 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,076 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,077 [INFO]     Dish: Chocolate
+2026-04-19 11:59:19,080 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,083 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,084 [INFO]     Dish: Chocolate Chip
+2026-04-19 11:59:19,085 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,087 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,087 [INFO]     Dish: Chocolate Chip Cookie Dough
+2026-04-19 11:59:19,088 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,090 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,091 [INFO]     Dish: Chocolate Fudge
+2026-04-19 11:59:19,092 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,093 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,094 [INFO]     Dish: Chocolate Mousse Royale®
+2026-04-19 11:59:19,094 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,095 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,095 [INFO]     Dish: Cookie Monster
+2026-04-19 11:59:19,097 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,098 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,098 [INFO]     Dish: Cotton Candy
+2026-04-19 11:59:19,100 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,102 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,102 [INFO]     Dish: Daiquiri Ice
+2026-04-19 11:59:19,104 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,106 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,106 [INFO]     Dish: Egg Nog
+2026-04-19 11:59:19,108 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,109 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,109 [INFO]     Dish: Gold Medal Ribbon®
+2026-04-19 11:59:19,111 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,112 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,113 [INFO]     Dish: Icing on the Cake®
+2026-04-19 11:59:19,114 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,116 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,116 [INFO]     Dish: Jamoca®
+2026-04-19 11:59:19,117 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,118 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,118 [INFO]     Dish: Jamoca® Almond Fudge
+2026-04-19 11:59:19,120 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,121 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,122 [INFO]     Dish: Lemon Sorbet
+2026-04-19 11:59:19,123 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,125 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,125 [INFO]     Dish: Mint Chocolate Chip
+2026-04-19 11:59:19,126 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,127 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,128 [INFO]     Dish: Nutty Coconut
+2026-04-19 11:59:19,129 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,131 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,131 [INFO]     Dish: Old Fashioned Butter Pecan
+2026-04-19 11:59:19,132 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,133 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,133 [INFO]     Dish: OREO® Cookies 'n Cream
+2026-04-19 11:59:19,134 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,135 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,135 [INFO]     Dish: OREO® 'n Cold Brew
+2026-04-19 11:59:19,137 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,138 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,138 [INFO]     Dish: Peanut Butter 'n Chocolate
+2026-04-19 11:59:19,139 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,140 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,140 [INFO]     Dish: Peppermint
+2026-04-19 11:59:19,142 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,143 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,144 [INFO]     Dish: No Sugar Added Pineapple Coconut
+2026-04-19 11:59:19,145 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,154 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,154 [INFO]     Dish: Pink Bubblegum
+2026-04-19 11:59:19,160 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,166 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,166 [INFO]     Dish: Pistachio Almond
+2026-04-19 11:59:19,170 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,174 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,174 [INFO]     Dish: Pralines 'n Cream
+2026-04-19 11:59:19,178 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,181 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,181 [INFO]     Dish: Rainbow Sherbet
+2026-04-19 11:59:19,188 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,194 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,194 [INFO]     Dish: REESE'S Peanut Butter Cup
+2026-04-19 11:59:19,195 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,197 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,197 [INFO]     Dish: Rocky Road
+2026-04-19 11:59:19,199 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,201 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,201 [INFO]     Dish: Strawberry Cheesecake
+2026-04-19 11:59:19,202 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,203 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,203 [INFO]     Dish: Triple Mango
+2026-04-19 11:59:19,205 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,206 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,207 [INFO]     Dish: Wild 'n Reckless Sherbet
+2026-04-19 11:59:19,208 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,212 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,212 [INFO]     Dish: Winter White Chocolate®
+2026-04-19 11:59:19,217 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,219 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,219 [INFO]     Dish: World Class® Chocolate
+2026-04-19 11:59:19,221 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,222 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,223 [INFO] 
+  Category: Beverages
+2026-04-19 11:59:19,223 [INFO]     Dish: Mangonada
+2026-04-19 11:59:19,224 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,225 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,227 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,227 [INFO]     Dish: Original Cappuccino Blast®
+2026-04-19 11:59:19,228 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,229 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,230 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,230 [INFO]     Dish: Caramel Cappuccino Blast®
+2026-04-19 11:59:19,231 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,232 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,234 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,234 [INFO]     Dish: Mocha Cappuccino Blast®
+2026-04-19 11:59:19,235 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,236 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,237 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,237 [INFO]     Dish: OREO® ‘n Cookies Cappuccino Blast®
+2026-04-19 11:59:19,238 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,239 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,241 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,241 [INFO]     Dish: Turtle Cappuccino Blast®
+2026-04-19 11:59:19,242 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,243 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,244 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,244 [INFO]     Dish: Float
+2026-04-19 11:59:19,245 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,246 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,248 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,248 [INFO]     Dish: Mango Smoothie
+2026-04-19 11:59:19,249 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,250 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,251 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,251 [INFO]     Dish: Mixed Berry Smoothie
+2026-04-19 11:59:19,252 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,254 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,255 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,255 [INFO]     Dish: Strawberry Smoothie
+2026-04-19 11:59:19,256 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,257 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,258 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,258 [INFO]     Dish: Freeze
+2026-04-19 11:59:19,259 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,261 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,262 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,262 [INFO]     Dish: Pepsi®
+2026-04-19 11:59:19,263 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,263 [INFO]     Dish: Pepsi® Zero Sugar
+2026-04-19 11:59:19,264 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,264 [INFO]     Dish: Diet Pepsi®
+2026-04-19 11:59:19,265 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,265 [INFO]     Dish: Starry®
+2026-04-19 11:59:19,267 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,267 [INFO]     Dish: MUG® Root Beer
+2026-04-19 11:59:19,268 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,268 [INFO] 
+  Category: Sundae
+2026-04-19 11:59:19,269 [INFO]     Dish: Chocolate Chip Cookie Dough Layered Sundae
+2026-04-19 11:59:19,270 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,270 [INFO]     Dish: OREO® Layered Sundae
+2026-04-19 11:59:19,271 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,271 [INFO]     Dish: REESE'S Peanut Butter Cup Layered Sundae
+2026-04-19 11:59:19,272 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,272 [INFO] 
+  Category: Cones
+2026-04-19 11:59:19,272 [INFO]     Dish: Fresh-Baked Waffle Cone
+2026-04-19 11:59:19,273 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,273 [INFO]     Dish: Dipped Waffle Cone
+2026-04-19 11:59:19,275 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,275 [INFO]     Dish: Fancy Waffle Cone with Almonds
+2026-04-19 11:59:19,276 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,276 [INFO]     Dish: Fancy Waffle Cone with Sprinkles
+2026-04-19 11:59:19,277 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,277 [INFO]     Dish: Cake Cone
+2026-04-19 11:59:19,278 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,278 [INFO]     Dish: Sugar Cone
+2026-04-19 11:59:19,279 [INFO]       [DRY RUN] Would download & upload.
+2026-04-19 11:59:19,280 [INFO] 
+[DRY RUN] No changes written to DB.
+2026-04-19 11:59:19,280 [INFO] 
+============================================================
+2026-04-19 11:59:19,280 [INFO] Migration complete.
+2026-04-19 11:59:19,280 [INFO] ============================================================
+2026-04-19 11:59:36,026 [INFO] Target     : Baskin-Robbins
+2026-04-19 11:59:36,027 [INFO] Documents  : 1
+2026-04-19 11:59:36,027 [INFO] Dry run    : False
+2026-04-19 11:59:36,027 [INFO] ============================================================
+2026-04-19 11:59:36,962 [INFO] 
+============================================================
+2026-04-19 11:59:36,962 [INFO] Restaurant: Baskin-Robbins
+2026-04-19 11:59:36,962 [INFO] ============================================================
+2026-04-19 11:59:36,962 [INFO]   Logo: https://res.cloudinary.com/dfwgrmy5h/image/upload/v1738982063/vjtmtzmdvve7c8of0nhx.png
+2026-04-19 11:59:38,471 [INFO] 
+  Category: Flavors
+2026-04-19 11:59:38,472 [INFO]     Dish: Cinnamon Roll
+2026-04-19 11:59:40,690 [INFO]     Dish: Non-Dairy Cookies 'n Crème
+2026-04-19 11:59:43,189 [INFO]     Dish: Chocolate Almond
+2026-04-19 11:59:45,890 [INFO]     Dish: TWIX® Caramel Crunch
+2026-04-19 11:59:48,340 [INFO]     Dish: Very Berry Strawberry
+2026-04-19 11:59:50,860 [INFO]     Dish: Vanilla Ice Cream
+2026-04-19 11:59:53,412 [INFO]     Dish: Baseball Nut®
+2026-04-19 11:59:55,914 [INFO]     Dish: No Sugar Added Caramel Turtle Truffle
+2026-04-19 11:59:58,385 [INFO]     Dish: Cherries Jubilee
+2026-04-19 12:00:01,209 [INFO]     Dish: Chocolate
+2026-04-19 12:00:03,974 [INFO]     Dish: Chocolate Chip
+2026-04-19 12:00:06,395 [INFO]     Dish: Chocolate Chip Cookie Dough
+2026-04-19 12:00:08,921 [INFO]     Dish: Chocolate Fudge
+2026-04-19 12:00:11,462 [INFO]     Dish: Chocolate Mousse Royale®
+2026-04-19 12:00:14,249 [INFO]     Dish: Cookie Monster
+2026-04-19 12:00:16,726 [INFO]     Dish: Cotton Candy
+2026-04-19 12:00:19,176 [INFO]     Dish: Daiquiri Ice
+2026-04-19 12:00:21,812 [INFO]     Dish: Egg Nog
+2026-04-19 12:00:24,251 [INFO]     Dish: Gold Medal Ribbon®
+2026-04-19 12:00:26,771 [INFO]     Dish: Icing on the Cake®
+2026-04-19 12:00:28,334 [INFO]     Dish: Jamoca®
+2026-04-19 12:00:31,170 [INFO]     Dish: Jamoca® Almond Fudge
+2026-04-19 12:00:33,633 [INFO]     Dish: Lemon Sorbet
+2026-04-19 12:00:36,072 [INFO]     Dish: Mint Chocolate Chip
+2026-04-19 12:00:38,530 [INFO]     Dish: Nutty Coconut
+2026-04-19 12:00:41,080 [INFO]     Dish: Old Fashioned Butter Pecan
+2026-04-19 12:00:43,531 [INFO]     Dish: OREO® Cookies 'n Cream
+2026-04-19 12:00:45,997 [INFO]     Dish: OREO® 'n Cold Brew
+2026-04-19 12:00:48,714 [INFO]     Dish: Peanut Butter 'n Chocolate
+2026-04-19 12:00:51,531 [INFO]     Dish: Peppermint
+2026-04-19 12:00:54,082 [INFO]     Dish: No Sugar Added Pineapple Coconut
+2026-04-19 12:00:56,745 [INFO]     Dish: Pink Bubblegum
+2026-04-19 12:00:59,216 [INFO]     Dish: Pistachio Almond
+2026-04-19 12:01:01,961 [INFO]     Dish: Pralines 'n Cream
+2026-04-19 12:01:04,459 [INFO]     Dish: Rainbow Sherbet
+2026-04-19 12:01:07,046 [INFO]     Dish: REESE'S Peanut Butter Cup
+2026-04-19 12:01:09,672 [INFO]     Dish: Rocky Road
+2026-04-19 12:01:12,376 [INFO]     Dish: Strawberry Cheesecake
+2026-04-19 12:01:15,287 [INFO]     Dish: Triple Mango
+2026-04-19 12:01:17,794 [INFO]     Dish: Wild 'n Reckless Sherbet
+2026-04-19 12:01:20,232 [INFO]     Dish: Winter White Chocolate®
+2026-04-19 12:01:23,285 [INFO]     Dish: World Class® Chocolate
+2026-04-19 12:01:25,731 [INFO] 
+  Category: Beverages
+2026-04-19 12:01:25,731 [INFO]     Dish: Mangonada
+2026-04-19 12:01:28,879 [INFO]     Dish: Original Cappuccino Blast®
+2026-04-19 12:01:32,150 [INFO]     Dish: Caramel Cappuccino Blast®
+2026-04-19 12:01:34,407 [INFO]     Dish: Mocha Cappuccino Blast®
+2026-04-19 12:01:37,532 [INFO]     Dish: OREO® ‘n Cookies Cappuccino Blast®
+2026-04-19 12:01:40,796 [INFO]     Dish: Turtle Cappuccino Blast®
+2026-04-19 12:01:43,996 [INFO]     Dish: Float
+2026-04-19 12:01:47,453 [INFO]     Dish: Mango Smoothie
+2026-04-19 12:01:50,587 [INFO]     Dish: Mixed Berry Smoothie
+2026-04-19 12:01:53,838 [INFO]     Dish: Strawberry Smoothie
+2026-04-19 12:01:57,212 [INFO]     Dish: Freeze
+2026-04-19 12:02:01,552 [INFO]     Dish: Pepsi®
+2026-04-19 12:02:03,221 [INFO]     Dish: Pepsi® Zero Sugar
+2026-04-19 12:02:04,901 [INFO]     Dish: Diet Pepsi®
+2026-04-19 12:02:06,596 [INFO]     Dish: Starry®
+2026-04-19 12:02:08,274 [INFO]     Dish: MUG® Root Beer
+2026-04-19 12:02:09,934 [INFO] 
+  Category: Sundae
+2026-04-19 12:02:09,934 [INFO]     Dish: Chocolate Chip Cookie Dough Layered Sundae
+2026-04-19 12:02:11,754 [INFO]     Dish: OREO® Layered Sundae
+2026-04-19 12:02:13,417 [INFO]     Dish: REESE'S Peanut Butter Cup Layered Sundae
+2026-04-19 12:02:15,089 [INFO] 
+  Category: Cones
+2026-04-19 12:02:15,090 [INFO]     Dish: Fresh-Baked Waffle Cone
+2026-04-19 12:02:16,834 [INFO]     Dish: Dipped Waffle Cone
+2026-04-19 12:02:18,284 [INFO]     Dish: Fancy Waffle Cone with Almonds
+2026-04-19 12:02:19,958 [INFO]     Dish: Fancy Waffle Cone with Sprinkles
+2026-04-19 12:02:21,631 [INFO]     Dish: Cake Cone
+2026-04-19 12:02:23,534 [INFO]     Dish: Sugar Cone
+2026-04-19 12:02:25,790 [INFO] 
+DB updated: 1 document(s) modified
+2026-04-19 12:02:25,791 [INFO] 
+============================================================
+2026-04-19 12:02:25,791 [INFO] Migration complete.
+2026-04-19 12:02:25,792 [INFO] ============================================================
