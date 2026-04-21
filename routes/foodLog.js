@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const authMiddleware = require("../middleware/auth");
 const FoodLog = require("../models/FoodLog");
 
-router.post("/addFoodLog", authMiddleware, async (req, res) => {
+router.post("/", authMiddleware, async (req, res) => {
   try {
     const { restaurantId, itemName, emoji, sizeLabel, kcal, meal, time } = req.body;
 
@@ -49,7 +49,7 @@ router.post("/addFoodLog", authMiddleware, async (req, res) => {
   }
 });
 
-router.delete("/deleteFoodLog/:logId", authMiddleware, async (req, res) => {
+router.delete("/:logId", authMiddleware, async (req, res) => {
   try {
     const { logId } = req.params;
 
