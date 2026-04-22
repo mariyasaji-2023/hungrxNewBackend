@@ -20,6 +20,15 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 const subscriptionRoutes = require("./routes/subscription");
 app.use("/api/v1/subscription", subscriptionRoutes);
 
+const profileRoutes = require("./routes/profile");
+app.use("/api/v1/profile", profileRoutes);
+
+const feedbackRoutes = require("./routes/feedback");
+app.use("/api/v1/feedback", feedbackRoutes);
+
+const restaurantSuggestionRoutes = require("./routes/restaurantSuggestions");
+app.use("/api/v1/restaurant-suggestions", restaurantSuggestionRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });
