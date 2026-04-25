@@ -29,10 +29,16 @@ app.use("/api/v1/feedback", feedbackRoutes);
 const restaurantSuggestionRoutes = require("./routes/restaurantSuggestions");
 app.use("/api/v1/restaurant-suggestions", restaurantSuggestionRoutes);
 
+const deviceRoutes = require("./routes/device");
+app.use("/api/v1/device", deviceRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });
 
+const { startCalorieReminderScheduler } = require("./services/calorieReminderScheduler");
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
+  startCalorieReminderScheduler();
 });

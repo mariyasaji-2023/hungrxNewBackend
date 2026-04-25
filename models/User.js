@@ -53,6 +53,9 @@ const userSchema = new mongoose.Schema(
       platform:   { type: String },
       appVersion: { type: String },
     },
+
+    // Notifications
+    lastCalorieReminderDate: { type: String }, // "YYYY-MM-DD"
   },
   { timestamps: true }
 );

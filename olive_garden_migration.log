@@ -1,0 +1,606 @@
+2026-04-22 07:52:03,242 [INFO] Target     : Olive Garden
+2026-04-22 07:52:03,245 [INFO] Documents  : 1
+2026-04-22 07:52:03,246 [INFO] Dry run    : True
+2026-04-22 07:52:03,247 [INFO] ============================================================
+2026-04-22 07:52:04,457 [INFO] 
+2026-04-22 07:52:04,457 [INFO] ============================================================
+2026-04-22 07:52:04,458 [INFO] Restaurant: Olive Garden
+2026-04-22 07:52:04,458 [INFO] ============================================================
+2026-04-22 07:52:04,458 [INFO]   Logo: https://res.cloudinary.com/dfwgrmy5h/image/upload/v1738981107/OGlogo_updated_pabu21.jpg
+2026-04-22 07:52:04,459 [INFO]   [DRY RUN] Would migrate logo.
+2026-04-22 07:52:04,459 [INFO] 
+2026-04-22 07:52:04,459 [INFO]   Category: Appetizers
+2026-04-22 07:52:04,459 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,459 [INFO]       Dish: Calamari
+2026-04-22 07:52:04,460 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/calamari-dpv-590x365.jpg
+2026-04-22 07:52:04,460 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,460 [INFO]       Dish: Shrimp Fritto Misto
+2026-04-22 07:52:04,460 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Shrimp-fritto-misto-dpv-1180x730.jpg
+2026-04-22 07:52:04,460 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,460 [INFO]       Dish: Fried Mozzarella
+2026-04-22 07:52:04,460 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Fried-Mozzarella-dpv-1180X730.jpg
+2026-04-22 07:52:04,460 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,460 [INFO]       Dish: Lasagna Fritta
+2026-04-22 07:52:04,460 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lasagna-Fritta-dpv-1180x730.jpg
+2026-04-22 07:52:04,460 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,460 [INFO]       Dish: Meatballs Parmigiana
+2026-04-22 07:52:04,460 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Meatball-Parmigiana-dpv-1180x730.jpg
+2026-04-22 07:52:04,461 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,461 [INFO]       Dish: Spinach-Artichoke Dip with flatbread crisps
+2026-04-22 07:52:04,461 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Spinach-Artichoke-Dip-dpv-1180x730.jpg
+2026-04-22 07:52:04,461 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,461 [INFO]       Dish: Stuffed Ziti Fritta
+2026-04-22 07:52:04,461 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/stuffed-ziti-fritta-appetizer-dpv-590x365.jpg
+2026-04-22 07:52:04,461 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,461 [INFO]       Dish: Toasted Ravioli
+2026-04-22 07:52:04,461 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Toasted_Ravioli_New_Recipe_1180x730.jpg
+2026-04-22 07:52:04,461 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,461 [INFO] 
+2026-04-22 07:52:04,461 [INFO]     SubCategory: Included Sauces
+2026-04-22 07:52:04,461 [INFO]       Dish: Spicy ranch
+2026-04-22 07:52:04,461 [INFO]       Dish: Alfredo
+2026-04-22 07:52:04,461 [INFO]       Dish: Marinara
+2026-04-22 07:52:04,461 [INFO] 
+2026-04-22 07:52:04,461 [INFO]   Category: Classic Entrées
+2026-04-22 07:52:04,462 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,462 [INFO]       Dish: Chicken Alfredo
+2026-04-22 07:52:04,462 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-chicken-alfredo-dinner-dpv-590x365.jpg
+2026-04-22 07:52:04,462 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,462 [INFO]       Dish: Chicken & Shrimp Carbonara
+2026-04-22 07:52:04,462 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/chicken-and-shrimp-carbonara-dpv-590x365.jpg
+2026-04-22 07:52:04,462 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,462 [INFO]       Dish: Shrimp Carbonara
+2026-04-22 07:52:04,462 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Carbonara-dpv-1180x730.jpg
+2026-04-22 07:52:04,462 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,462 [INFO]       Dish: Chicken Parmigiana
+2026-04-22 07:52:04,462 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/dinner-chicken-parm-dpv-590x365.jpg
+2026-04-22 07:52:04,462 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,462 [INFO]       Dish: Tour of Italy
+2026-04-22 07:52:04,463 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Tour-of-Italy-dpv1180X730.jpg
+2026-04-22 07:52:04,463 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,463 [INFO]       Dish: Shrimp Alfredo
+2026-04-22 07:52:04,463 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Alfredo-dpv-1180x730.jpg
+2026-04-22 07:52:04,463 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,463 [INFO]       Dish: Ravioli Carbonara
+2026-04-22 07:52:04,463 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Ravioli-Carbonara-dpv-1180x730.jpg
+2026-04-22 07:52:04,463 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,463 [INFO]       Dish: Lasagna Classico
+2026-04-22 07:52:04,463 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/lasagna-classico-dpv-1180x730.png
+2026-04-22 07:52:04,464 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,464 [INFO]       Dish: Spaghetti & Meatballs
+2026-04-22 07:52:04,464 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Spaghetti-meatballs-dpv-1180x730.jpg
+2026-04-22 07:52:04,464 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,464 [INFO]       Dish: Spaghetti with Meat Sauce
+2026-04-22 07:52:04,464 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Meat_Sauce_1180x730.jpg
+2026-04-22 07:52:04,464 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,464 [INFO]       Dish: Spaghetti with Marinara (V)
+2026-04-22 07:52:04,464 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Marinara_1180x730.jpg
+2026-04-22 07:52:04,464 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,464 [INFO]       Dish: Fettuccine Alfredo (V)
+2026-04-22 07:52:04,465 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-fettuccine-alfredo-dinner-dpv-590x365.jpg
+2026-04-22 07:52:04,465 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,465 [INFO]       Dish: Chicken Tortelloni Alfredo
+2026-04-22 07:52:04,465 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/asiago-tortelloni-alfredo-with-grilled-chicken-dpv-1180x730.png
+2026-04-22 07:52:04,465 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,465 [INFO]       Dish: Stuffed Chicken Marsala
+2026-04-22 07:52:04,465 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Stuffed-Chicken-Marsala-dpv-1180x730.jpg
+2026-04-22 07:52:04,465 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,465 [INFO]       Dish: Steak Gorgonzola Alfredo
+2026-04-22 07:52:04,465 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Steak-Gorgonzola-dpv-1180x730.jpg
+2026-04-22 07:52:04,465 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,466 [INFO]       Dish: Shrimp Scampi
+2026-04-22 07:52:04,466 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Scampi-Dinner-dpv-1180x730.jpg
+2026-04-22 07:52:04,466 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,466 [INFO]       Dish: Seafood Alfredo
+2026-04-22 07:52:04,466 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/seafood-alfredo-dpv-1180x730.png
+2026-04-22 07:52:04,466 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,466 [INFO]       Dish: Five Cheese Ziti al Forno
+2026-04-22 07:52:04,466 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-five-cheese-ziti-al-forno-dpv-590x365.jpg
+2026-04-22 07:52:04,466 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,466 [INFO]       Dish: Cheese Ravioli (Meat Sauce)
+2026-04-22 07:52:04,467 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-dpv-1180x730.jpg
+2026-04-22 07:52:04,467 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,467 [INFO]       Dish: Cheese Ravioli ( Marinara Sauce)
+2026-04-22 07:52:04,467 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-dpv-1180x730.jpg
+2026-04-22 07:52:04,467 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,467 [INFO]       Dish: Chicken Scampi
+2026-04-22 07:52:04,467 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Chicken-Scampi-dpv-1180x730.jpg
+2026-04-22 07:52:04,467 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,468 [INFO]       Dish: Eggplant Parmigiana (V)
+2026-04-22 07:52:04,468 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-eggplant-parmigiana-dinner-dpv-590x365.jpg
+2026-04-22 07:52:04,468 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,468 [INFO]       Dish: Grilled Chicken Margherita
+2026-04-22 07:52:04,468 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Chicken-Margherita-dvp-1180X730.jpg
+2026-04-22 07:52:04,468 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,468 [INFO]       Dish: Herb-Grilled Salmon Herb-Grilled Salmon
+2026-04-22 07:52:04,468 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/HerbGrilledSalmon_v1_dpv.jpg
+2026-04-22 07:52:04,469 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,469 [INFO]       Dish: 6 oz. Sirloin
+2026-04-22 07:52:04,469 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Merch_Steak_Alfredo_Salad_Wine_DPV.jpg
+2026-04-22 07:52:04,469 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,469 [INFO]       Dish: Three-Meat Manicotti
+2026-04-22 07:52:04,469 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Three-Meat-Manicotti-dpv-1180x730.jpg
+2026-04-22 07:52:04,470 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,470 [INFO]       Dish: Four-Cheese Manicotti
+2026-04-22 07:52:04,470 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Four-Cheese-Manicotti-dpv-1180x730.jpg
+2026-04-22 07:52:04,470 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,470 [INFO] 
+2026-04-22 07:52:04,470 [INFO]   Category: Soups, Salad & Breadsticks
+2026-04-22 07:52:04,470 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,470 [INFO]       Dish: Chicken & Gnocchi Soup
+2026-04-22 07:52:04,470 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:52:04,470 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,471 [INFO]       Dish: Minestrone Soup
+2026-04-22 07:52:04,471 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:52:04,471 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,471 [INFO]       Dish: Pasta Fagioli Soup
+2026-04-22 07:52:04,471 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:52:04,471 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,471 [INFO]       Dish: Zuppa Toscana Soup
+2026-04-22 07:52:04,472 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:52:04,472 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,472 [INFO]       Dish: Our Famous House Salad
+2026-04-22 07:52:04,472 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Garden-Salad-dpv-1180x730.jpg
+2026-04-22 07:52:04,472 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,472 [INFO] 
+2026-04-22 07:52:04,472 [INFO]   Category: Lunch-Sized Favorites
+2026-04-22 07:52:04,472 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,472 [INFO]       Dish: Lasagna Classico
+2026-04-22 07:52:04,472 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/LasagnaClassico_lunch_DPV.jpg
+2026-04-22 07:52:04,473 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,473 [INFO]       Dish: Chicken Parmigiana
+2026-04-22 07:52:04,473 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/og-chicken-parmigiana-lunch-dpv-590x365.jpg
+2026-04-22 07:52:04,473 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,473 [INFO]       Dish: Fettuccine Alfredo (V)
+2026-04-22 07:52:04,473 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_FettucineAlfredo_DPV.jpg
+2026-04-22 07:52:04,473 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,473 [INFO]       Dish: Shrimp Scampi
+2026-04-22 07:52:04,473 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_ShrimpScampi_DPV.jpg
+2026-04-22 07:52:04,474 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,474 [INFO]       Dish: Spaghetti (Marinara Sauce)
+2026-04-22 07:52:04,474 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatsauce_DPV.jpg
+2026-04-22 07:52:04,474 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,474 [INFO]       Dish: Spaghetti (Meat Sauce)
+2026-04-22 07:52:04,474 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatsauce_DPV.jpg
+2026-04-22 07:52:04,474 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,474 [INFO]       Dish: Eggplant Parmigiana (V)
+2026-04-22 07:52:04,474 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Eggplant-Parmigiana-Lunch-dpv-1180x730.jpg
+2026-04-22 07:52:04,474 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,474 [INFO]       Dish: Spaghetti with Meat Sauce & Meatballs 680
+2026-04-22 07:52:04,475 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatballs_DPV.jpg
+2026-04-22 07:52:04,475 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,475 [INFO]       Dish: Cheese Ravioli (Marinara Sauce)
+2026-04-22 07:52:04,475 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-Lunch-gv-590X365.jpg
+2026-04-22 07:52:04,475 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,475 [INFO]       Dish: Cheese Ravioli (Meat Sauce)
+2026-04-22 07:52:04,475 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-Lunch-gv-590X365.jpg
+2026-04-22 07:52:04,475 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,475 [INFO]       Dish: Five Cheese Ziti al Forno
+2026-04-22 07:52:04,475 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Five-Cheese-Ziti-Lunch-dpv-1180x730.jpg
+2026-04-22 07:52:04,475 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,475 [INFO] 
+2026-04-22 07:52:04,475 [INFO]   Category: Desserts
+2026-04-22 07:52:04,475 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,476 [INFO]       Dish: Chocolate Lasagna (V)
+2026-04-22 07:52:04,476 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Chocolate_Lasagna_1180X730.jpg
+2026-04-22 07:52:04,476 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,476 [INFO]       Dish: Black Tie Mousse Cake (V)
+2026-04-22 07:52:04,476 [INFO]       -> [0] http://media.olivegarden.com/en_us/images/product/black-tie-mousse-cake-dpv-590x365.jpg
+2026-04-22 07:52:04,476 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,476 [INFO]       Dish: Tiramisu (V)
+2026-04-22 07:52:04,476 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Tiramisu-dpv-1180x730.jpg
+2026-04-22 07:52:04,476 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,476 [INFO]       Dish: Strawberry Cream Cake (V)
+2026-04-22 07:52:04,476 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Cream-Cake-Updated-dpv-1180x730.jpg
+2026-04-22 07:52:04,476 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,477 [INFO]       Dish: Warm Italian Doughnuts (V)
+2026-04-22 07:52:04,477 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Warm-Italian-Donuts-Chocolate-dpv-1180x730.jpg
+2026-04-22 07:52:04,477 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,477 [INFO]       Dish: Sicilian Cheesecake with Strawberry Topping (V)
+2026-04-22 07:52:04,477 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Cheesecake-gv-1180x730.jpg
+2026-04-22 07:52:04,477 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,477 [INFO] 
+2026-04-22 07:52:04,477 [INFO]     SubCategory: Included Sauces
+2026-04-22 07:52:04,477 [INFO]       Dish: Raspberry sauce
+2026-04-22 07:52:04,478 [INFO]       Dish: Chocolate sauce
+2026-04-22 07:52:04,478 [INFO] 
+2026-04-22 07:52:04,478 [INFO]   Category: Sides & Sauces
+2026-04-22 07:52:04,478 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,478 [INFO]       Dish: Meatballs
+2026-04-22 07:52:04,478 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Meatball-Side-dpv-1180X730.jpg
+2026-04-22 07:52:04,478 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,478 [INFO]       Dish: Grilled Chicken
+2026-04-22 07:52:04,478 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Grilled-Chicken-Side-dpv-1180X730.jpg
+2026-04-22 07:52:04,478 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,478 [INFO]       Dish: Italian Sausage
+2026-04-22 07:52:04,479 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Italian-Sausage-Side-gv-590x365.jpg
+2026-04-22 07:52:04,479 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,479 [INFO]       Dish: Side of Mixed Vegetables
+2026-04-22 07:52:04,479 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Mixed-Vegetables-Side-OG-dpv-1180x730.jpg
+2026-04-22 07:52:04,479 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,479 [INFO]       Dish: Side of Mashed Potatoes
+2026-04-22 07:52:04,479 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Kids-Mashed-Potatoes-dpv-1180x730.jpg
+2026-04-22 07:52:04,479 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,479 [INFO]       Dish: Side of Broccoli (V)
+2026-04-22 07:52:04,479 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Broccoli-Side-dpv-1180X730.jpg
+2026-04-22 07:52:04,479 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,480 [INFO]       Dish: Marinara Sauce
+2026-04-22 07:52:04,480 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,480 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,480 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,480 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,480 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,480 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,480 [INFO]       Dish: Alfredo Sauce
+2026-04-22 07:52:04,480 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:52:04,480 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,480 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:52:04,481 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,481 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:52:04,481 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,481 [INFO]       Dish: Meat Sauce
+2026-04-22 07:52:04,481 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Meat-Sauce-dpv.jpg
+2026-04-22 07:52:04,481 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,481 [INFO]       Dish: Five Cheese Marinara Sauce
+2026-04-22 07:52:04,482 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,482 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,482 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,482 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,482 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:52:04,482 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,482 [INFO] 
+2026-04-22 07:52:04,482 [INFO]   Category: Non-Alcoholic Drinks
+2026-04-22 07:52:04,483 [INFO]     [Direct dishes]
+2026-04-22 07:52:04,483 [INFO]       Dish: Coffee
+2026-04-22 07:52:04,483 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Espresso-dpv-1180x730.jpg
+2026-04-22 07:52:04,483 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,483 [INFO]       Dish: Cappuccino
+2026-04-22 07:52:04,483 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-cappuccino-with-whipped-cream-dpv.jpg
+2026-04-22 07:52:04,483 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,483 [INFO]       Dish: Lavazza Espresso
+2026-04-22 07:52:04,483 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Espresso-gv-590x365.jpg
+2026-04-22 07:52:04,484 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,484 [INFO]       Dish: Bellini Peach-Raspberry Iced Tea
+2026-04-22 07:52:04,484 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/BelliniPeachRaspberryIcedTea_1120_WithOrange_dpv.jpg
+2026-04-22 07:52:04,484 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,484 [INFO]       Dish: Mango-Strawberry Iced Tea
+2026-04-22 07:52:04,484 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/mango-strawberry-tea-dpv-590x365.jpg
+2026-04-22 07:52:04,484 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,484 [INFO]       Dish: Classic Lemonade
+2026-04-22 07:52:04,484 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/og-lemonade-dpv-590x365.png
+2026-04-22 07:52:04,484 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,484 [INFO]       Dish: Raspberry Lemonade
+2026-04-22 07:52:04,485 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-raspberry-lemonade-dpv.JPG
+2026-04-22 07:52:04,485 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,485 [INFO]       Dish: Strawberry-Passion Fruit Limonata
+2026-04-22 07:52:04,485 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Passion_Fruit_Limonata_1130x730_01.jpg
+2026-04-22 07:52:04,485 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,485 [INFO] 
+2026-04-22 07:52:04,485 [INFO]     SubCategory: To Go Fountain Drinks
+2026-04-22 07:52:04,485 [INFO]       Dish: Coke
+2026-04-22 07:52:04,485 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,486 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,486 [INFO]       Dish: Coke Zero
+2026-04-22 07:52:04,486 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,486 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,486 [INFO]       Dish: Diet Coke
+2026-04-22 07:52:04,486 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,486 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,486 [INFO]       Dish: Dr. Pepper
+2026-04-22 07:52:04,486 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,487 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,487 [INFO]       Dish: Minute Maid Lemonade
+2026-04-22 07:52:04,487 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,487 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,487 [INFO]       Dish: Sprite
+2026-04-22 07:52:04,487 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:52:04,487 [INFO]         [DRY RUN] Would download and upload.
+2026-04-22 07:52:04,487 [INFO] 
+2026-04-22 07:52:04,487 [INFO] [DRY RUN] No changes written to DB.
+2026-04-22 07:52:04,487 [INFO] 
+2026-04-22 07:52:04,488 [INFO] ============================================================
+2026-04-22 07:52:04,488 [INFO] Migration complete.
+2026-04-22 07:52:04,488 [INFO] ============================================================
+2026-04-22 07:52:21,836 [INFO] Target     : Olive Garden
+2026-04-22 07:52:21,837 [INFO] Documents  : 1
+2026-04-22 07:52:21,838 [INFO] Dry run    : False
+2026-04-22 07:52:21,839 [INFO] ============================================================
+2026-04-22 07:52:22,749 [INFO] 
+2026-04-22 07:52:22,749 [INFO] ============================================================
+2026-04-22 07:52:22,749 [INFO] Restaurant: Olive Garden
+2026-04-22 07:52:22,749 [INFO] ============================================================
+2026-04-22 07:52:22,749 [INFO]   Logo: https://res.cloudinary.com/dfwgrmy5h/image/upload/v1738981107/OGlogo_updated_pabu21.jpg
+2026-04-22 07:52:24,070 [INFO]   OK Logo uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/logo.jpg
+2026-04-22 07:52:24,070 [INFO] 
+2026-04-22 07:52:24,071 [INFO]   Category: Appetizers
+2026-04-22 07:52:24,071 [INFO]     [Direct dishes]
+2026-04-22 07:52:24,072 [INFO]       Dish: Calamari
+2026-04-22 07:52:24,073 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/calamari-dpv-590x365.jpg
+2026-04-22 07:52:27,616 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/calamari/1.jpg
+2026-04-22 07:52:27,617 [INFO]       Dish: Shrimp Fritto Misto
+2026-04-22 07:52:27,617 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Shrimp-fritto-misto-dpv-1180x730.jpg
+2026-04-22 07:52:31,786 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/shrimp_fritto_misto/1.jpg
+2026-04-22 07:52:31,786 [INFO]       Dish: Fried Mozzarella
+2026-04-22 07:52:31,787 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Fried-Mozzarella-dpv-1180X730.jpg
+2026-04-22 07:52:33,193 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/fried_mozzarella/1.jpg
+2026-04-22 07:52:33,194 [INFO]       Dish: Lasagna Fritta
+2026-04-22 07:52:33,194 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lasagna-Fritta-dpv-1180x730.jpg
+2026-04-22 07:52:36,744 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/lasagna_fritta/1.jpg
+2026-04-22 07:52:36,744 [INFO]       Dish: Meatballs Parmigiana
+2026-04-22 07:52:36,744 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Meatball-Parmigiana-dpv-1180x730.jpg
+2026-04-22 07:52:37,661 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/meatballs_parmigiana/1.jpg
+2026-04-22 07:52:37,661 [INFO]       Dish: Spinach-Artichoke Dip with flatbread crisps
+2026-04-22 07:52:37,661 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Spinach-Artichoke-Dip-dpv-1180x730.jpg
+2026-04-22 07:52:41,671 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/spinach_artichoke_dip_with_flatbread_crisps/1.jpg
+2026-04-22 07:52:41,672 [INFO]       Dish: Stuffed Ziti Fritta
+2026-04-22 07:52:41,672 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/stuffed-ziti-fritta-appetizer-dpv-590x365.jpg
+2026-04-22 07:52:45,059 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/stuffed_ziti_fritta/1.jpg
+2026-04-22 07:52:45,059 [INFO]       Dish: Toasted Ravioli
+2026-04-22 07:52:45,059 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Toasted_Ravioli_New_Recipe_1180x730.jpg
+2026-04-22 07:52:48,636 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/appetizers/toasted_ravioli/1.jpg
+2026-04-22 07:52:48,637 [INFO] 
+2026-04-22 07:52:48,637 [INFO]     SubCategory: Included Sauces
+2026-04-22 07:52:48,637 [INFO]       Dish: Spicy ranch
+2026-04-22 07:52:48,638 [INFO]       Dish: Alfredo
+2026-04-22 07:52:48,638 [INFO]       Dish: Marinara
+2026-04-22 07:52:48,639 [INFO] 
+2026-04-22 07:52:48,639 [INFO]   Category: Classic Entrées
+2026-04-22 07:52:48,639 [INFO]     [Direct dishes]
+2026-04-22 07:52:48,640 [INFO]       Dish: Chicken Alfredo
+2026-04-22 07:52:48,640 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-chicken-alfredo-dinner-dpv-590x365.jpg
+2026-04-22 07:52:49,695 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/chicken_alfredo/1.jpg
+2026-04-22 07:52:49,695 [INFO]       Dish: Chicken & Shrimp Carbonara
+2026-04-22 07:52:49,695 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/chicken-and-shrimp-carbonara-dpv-590x365.jpg
+2026-04-22 07:52:52,951 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/chicken_shrimp_carbonara/1.jpg
+2026-04-22 07:52:52,952 [INFO]       Dish: Shrimp Carbonara
+2026-04-22 07:52:52,952 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Carbonara-dpv-1180x730.jpg
+2026-04-22 07:52:56,504 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/shrimp_carbonara/1.jpg
+2026-04-22 07:52:56,504 [INFO]       Dish: Chicken Parmigiana
+2026-04-22 07:52:56,505 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/dinner-chicken-parm-dpv-590x365.jpg
+2026-04-22 07:52:57,232 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/chicken_parmigiana/1.jpg
+2026-04-22 07:52:57,233 [INFO]       Dish: Tour of Italy
+2026-04-22 07:52:57,233 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Tour-of-Italy-dpv1180X730.jpg
+2026-04-22 07:52:58,057 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/tour_of_italy/1.jpg
+2026-04-22 07:52:58,058 [INFO]       Dish: Shrimp Alfredo
+2026-04-22 07:52:58,058 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Alfredo-dpv-1180x730.jpg
+2026-04-22 07:53:00,722 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/shrimp_alfredo/1.jpg
+2026-04-22 07:53:00,722 [INFO]       Dish: Ravioli Carbonara
+2026-04-22 07:53:00,723 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Ravioli-Carbonara-dpv-1180x730.jpg
+2026-04-22 07:53:03,919 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/ravioli_carbonara/1.jpg
+2026-04-22 07:53:03,920 [INFO]       Dish: Lasagna Classico
+2026-04-22 07:53:03,920 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/lasagna-classico-dpv-1180x730.png
+2026-04-22 07:53:07,202 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/lasagna_classico/1.png
+2026-04-22 07:53:07,202 [INFO]       Dish: Spaghetti & Meatballs
+2026-04-22 07:53:07,203 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Spaghetti-meatballs-dpv-1180x730.jpg
+2026-04-22 07:53:08,813 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/spaghetti_meatballs/1.jpg
+2026-04-22 07:53:08,814 [INFO]       Dish: Spaghetti with Meat Sauce
+2026-04-22 07:53:08,814 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Meat_Sauce_1180x730.jpg
+2026-04-22 07:53:11,830 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/spaghetti_with_meat_sauce/1.jpg
+2026-04-22 07:53:11,831 [INFO]       Dish: Spaghetti with Marinara (V)
+2026-04-22 07:53:11,831 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Marinara_1180x730.jpg
+2026-04-22 07:53:14,635 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/spaghetti_with_marinara_v/1.jpg
+2026-04-22 07:53:14,636 [INFO]       Dish: Fettuccine Alfredo (V)
+2026-04-22 07:53:14,636 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-fettuccine-alfredo-dinner-dpv-590x365.jpg
+2026-04-22 07:53:17,410 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/fettuccine_alfredo_v/1.jpg
+2026-04-22 07:53:17,411 [INFO]       Dish: Chicken Tortelloni Alfredo
+2026-04-22 07:53:17,411 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/asiago-tortelloni-alfredo-with-grilled-chicken-dpv-1180x730.png
+2026-04-22 07:53:20,319 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/chicken_tortelloni_alfredo/1.png
+2026-04-22 07:53:20,319 [INFO]       Dish: Stuffed Chicken Marsala
+2026-04-22 07:53:20,319 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Stuffed-Chicken-Marsala-dpv-1180x730.jpg
+2026-04-22 07:53:23,398 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/stuffed_chicken_marsala/1.jpg
+2026-04-22 07:53:23,398 [INFO]       Dish: Steak Gorgonzola Alfredo
+2026-04-22 07:53:23,398 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Steak-Gorgonzola-dpv-1180x730.jpg
+2026-04-22 07:53:26,880 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/steak_gorgonzola_alfredo/1.jpg
+2026-04-22 07:53:26,880 [INFO]       Dish: Shrimp Scampi
+2026-04-22 07:53:26,881 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Shrimp-Scampi-Dinner-dpv-1180x730.jpg
+2026-04-22 07:53:30,774 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/shrimp_scampi/1.jpg
+2026-04-22 07:53:30,775 [INFO]       Dish: Seafood Alfredo
+2026-04-22 07:53:30,776 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/seafood-alfredo-dpv-1180x730.png
+2026-04-22 07:53:37,206 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/seafood_alfredo/1.png
+2026-04-22 07:53:37,206 [INFO]       Dish: Five Cheese Ziti al Forno
+2026-04-22 07:53:37,206 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-five-cheese-ziti-al-forno-dpv-590x365.jpg
+2026-04-22 07:53:39,765 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/five_cheese_ziti_al_forno/1.jpg
+2026-04-22 07:53:39,766 [INFO]       Dish: Cheese Ravioli (Meat Sauce)
+2026-04-22 07:53:39,766 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-dpv-1180x730.jpg
+2026-04-22 07:53:42,994 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/cheese_ravioli_meat_sauce/1.jpg
+2026-04-22 07:53:42,995 [INFO]       Dish: Cheese Ravioli ( Marinara Sauce)
+2026-04-22 07:53:42,996 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-dpv-1180x730.jpg
+2026-04-22 07:53:44,005 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/cheese_ravioli_marinara_sauce/1.jpg
+2026-04-22 07:53:44,006 [INFO]       Dish: Chicken Scampi
+2026-04-22 07:53:44,006 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Chicken-Scampi-dpv-1180x730.jpg
+2026-04-22 07:53:47,382 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/chicken_scampi/1.jpg
+2026-04-22 07:53:47,383 [INFO]       Dish: Eggplant Parmigiana (V)
+2026-04-22 07:53:47,383 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/classic-eggplant-parmigiana-dinner-dpv-590x365.jpg
+2026-04-22 07:53:50,418 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/eggplant_parmigiana_v/1.jpg
+2026-04-22 07:53:50,419 [INFO]       Dish: Grilled Chicken Margherita
+2026-04-22 07:53:50,419 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Chicken-Margherita-dvp-1180X730.jpg
+2026-04-22 07:53:53,422 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/grilled_chicken_margherita/1.jpg
+2026-04-22 07:53:53,422 [INFO]       Dish: Herb-Grilled Salmon Herb-Grilled Salmon
+2026-04-22 07:53:53,423 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/HerbGrilledSalmon_v1_dpv.jpg
+2026-04-22 07:53:56,477 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/herb_grilled_salmon_herb_grilled_salmon/1.jpg
+2026-04-22 07:53:56,477 [INFO]       Dish: 6 oz. Sirloin
+2026-04-22 07:53:56,478 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Merch_Steak_Alfredo_Salad_Wine_DPV.jpg
+2026-04-22 07:53:59,998 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/6_oz_sirloin/1.jpg
+2026-04-22 07:53:59,998 [INFO]       Dish: Three-Meat Manicotti
+2026-04-22 07:53:59,999 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Three-Meat-Manicotti-dpv-1180x730.jpg
+2026-04-22 07:54:04,626 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/three_meat_manicotti/1.jpg
+2026-04-22 07:54:04,627 [INFO]       Dish: Four-Cheese Manicotti
+2026-04-22 07:54:04,627 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Four-Cheese-Manicotti-dpv-1180x730.jpg
+2026-04-22 07:54:07,252 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/classic_entrées/four_cheese_manicotti/1.jpg
+2026-04-22 07:54:07,252 [INFO] 
+2026-04-22 07:54:07,253 [INFO]   Category: Soups, Salad & Breadsticks
+2026-04-22 07:54:07,253 [INFO]     [Direct dishes]
+2026-04-22 07:54:07,253 [INFO]       Dish: Chicken & Gnocchi Soup
+2026-04-22 07:54:07,253 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:54:09,592 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/soups_salad_breadsticks/chicken_gnocchi_soup/1.jpg
+2026-04-22 07:54:09,593 [INFO]       Dish: Minestrone Soup
+2026-04-22 07:54:09,593 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:54:10,310 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/soups_salad_breadsticks/minestrone_soup/1.jpg
+2026-04-22 07:54:10,310 [INFO]       Dish: Pasta Fagioli Soup
+2026-04-22 07:54:10,310 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:54:11,012 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/soups_salad_breadsticks/pasta_fagioli_soup/1.jpg
+2026-04-22 07:54:11,012 [INFO]       Dish: Zuppa Toscana Soup
+2026-04-22 07:54:11,012 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/soup-array-dpv-590x365.jpg
+2026-04-22 07:54:11,735 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/soups_salad_breadsticks/zuppa_toscana_soup/1.jpg
+2026-04-22 07:54:11,736 [INFO]       Dish: Our Famous House Salad
+2026-04-22 07:54:11,736 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Garden-Salad-dpv-1180x730.jpg
+2026-04-22 07:54:17,703 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/soups_salad_breadsticks/our_famous_house_salad/1.jpg
+2026-04-22 07:54:17,703 [INFO] 
+2026-04-22 07:54:17,703 [INFO]   Category: Lunch-Sized Favorites
+2026-04-22 07:54:17,703 [INFO]     [Direct dishes]
+2026-04-22 07:54:17,703 [INFO]       Dish: Lasagna Classico
+2026-04-22 07:54:17,704 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/LasagnaClassico_lunch_DPV.jpg
+2026-04-22 07:54:21,072 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/lasagna_classico/1.jpg
+2026-04-22 07:54:21,072 [INFO]       Dish: Chicken Parmigiana
+2026-04-22 07:54:21,072 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/og-chicken-parmigiana-lunch-dpv-590x365.jpg
+2026-04-22 07:54:24,647 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/chicken_parmigiana/1.jpg
+2026-04-22 07:54:24,647 [INFO]       Dish: Fettuccine Alfredo (V)
+2026-04-22 07:54:24,647 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_FettucineAlfredo_DPV.jpg
+2026-04-22 07:54:27,592 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/fettuccine_alfredo_v/1.jpg
+2026-04-22 07:54:27,593 [INFO]       Dish: Shrimp Scampi
+2026-04-22 07:54:27,593 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_ShrimpScampi_DPV.jpg
+2026-04-22 07:54:30,862 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/shrimp_scampi/1.jpg
+2026-04-22 07:54:30,863 [INFO]       Dish: Spaghetti (Marinara Sauce)
+2026-04-22 07:54:30,863 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatsauce_DPV.jpg
+2026-04-22 07:54:34,647 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/spaghetti_marinara_sauce/1.jpg
+2026-04-22 07:54:34,647 [INFO]       Dish: Spaghetti (Meat Sauce)
+2026-04-22 07:54:34,648 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatsauce_DPV.jpg
+2026-04-22 07:54:35,436 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/spaghetti_meat_sauce/1.jpg
+2026-04-22 07:54:35,436 [INFO]       Dish: Eggplant Parmigiana (V)
+2026-04-22 07:54:35,437 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Eggplant-Parmigiana-Lunch-dpv-1180x730.jpg
+2026-04-22 07:54:38,447 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/eggplant_parmigiana_v/1.jpg
+2026-04-22 07:54:38,448 [INFO]       Dish: Spaghetti with Meat Sauce & Meatballs 680
+2026-04-22 07:54:38,449 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Lunch_SpaghettiWithMeatballs_DPV.jpg
+2026-04-22 07:54:41,434 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/spaghetti_with_meat_sauce_meatballs_680/1.jpg
+2026-04-22 07:54:41,434 [INFO]       Dish: Cheese Ravioli (Marinara Sauce)
+2026-04-22 07:54:41,434 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-Lunch-gv-590X365.jpg
+2026-04-22 07:54:44,210 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/cheese_ravioli_marinara_sauce/1.jpg
+2026-04-22 07:54:44,211 [INFO]       Dish: Cheese Ravioli (Meat Sauce)
+2026-04-22 07:54:44,212 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Cheese-Ravioli-Lunch-gv-590X365.jpg
+2026-04-22 07:54:44,973 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/cheese_ravioli_meat_sauce/1.jpg
+2026-04-22 07:54:44,974 [INFO]       Dish: Five Cheese Ziti al Forno
+2026-04-22 07:54:44,974 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/Five-Cheese-Ziti-Lunch-dpv-1180x730.jpg
+2026-04-22 07:54:48,265 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/lunch_sized_favorites/five_cheese_ziti_al_forno/1.jpg
+2026-04-22 07:54:48,265 [INFO] 
+2026-04-22 07:54:48,266 [INFO]   Category: Desserts
+2026-04-22 07:54:48,266 [INFO]     [Direct dishes]
+2026-04-22 07:54:48,267 [INFO]       Dish: Chocolate Lasagna (V)
+2026-04-22 07:54:48,267 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Chocolate_Lasagna_1180X730.jpg
+2026-04-22 07:54:51,002 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/chocolate_lasagna_v/1.jpg
+2026-04-22 07:54:51,003 [INFO]       Dish: Black Tie Mousse Cake (V)
+2026-04-22 07:54:51,004 [INFO]       -> [0] http://media.olivegarden.com/en_us/images/product/black-tie-mousse-cake-dpv-590x365.jpg
+2026-04-22 07:54:53,656 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/black_tie_mousse_cake_v/1.jpg
+2026-04-22 07:54:53,657 [INFO]       Dish: Tiramisu (V)
+2026-04-22 07:54:53,657 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Tiramisu-dpv-1180x730.jpg
+2026-04-22 07:54:58,026 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/tiramisu_v/1.jpg
+2026-04-22 07:54:58,026 [INFO]       Dish: Strawberry Cream Cake (V)
+2026-04-22 07:54:58,026 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Cream-Cake-Updated-dpv-1180x730.jpg
+2026-04-22 07:55:00,746 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/strawberry_cream_cake_v/1.jpg
+2026-04-22 07:55:00,746 [INFO]       Dish: Warm Italian Doughnuts (V)
+2026-04-22 07:55:00,747 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Warm-Italian-Donuts-Chocolate-dpv-1180x730.jpg
+2026-04-22 07:55:04,381 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/warm_italian_doughnuts_v/1.jpg
+2026-04-22 07:55:04,382 [INFO]       Dish: Sicilian Cheesecake with Strawberry Topping (V)
+2026-04-22 07:55:04,382 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Cheesecake-gv-1180x730.jpg
+2026-04-22 07:55:07,345 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/desserts/sicilian_cheesecake_with_strawberry_topping_v/1.jpg
+2026-04-22 07:55:07,346 [INFO] 
+2026-04-22 07:55:07,346 [INFO]     SubCategory: Included Sauces
+2026-04-22 07:55:07,347 [INFO]       Dish: Raspberry sauce
+2026-04-22 07:55:07,347 [INFO]       Dish: Chocolate sauce
+2026-04-22 07:55:07,348 [INFO] 
+2026-04-22 07:55:07,348 [INFO]   Category: Sides & Sauces
+2026-04-22 07:55:07,348 [INFO]     [Direct dishes]
+2026-04-22 07:55:07,348 [INFO]       Dish: Meatballs
+2026-04-22 07:55:07,349 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Meatball-Side-dpv-1180X730.jpg
+2026-04-22 07:55:11,389 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/meatballs/3_piece.jpg
+2026-04-22 07:55:11,389 [INFO]       Dish: Grilled Chicken
+2026-04-22 07:55:11,390 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Grilled-Chicken-Side-dpv-1180X730.jpg
+2026-04-22 07:55:14,633 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/grilled_chicken/1.jpg
+2026-04-22 07:55:14,633 [INFO]       Dish: Italian Sausage
+2026-04-22 07:55:14,634 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Italian-Sausage-Side-gv-590x365.jpg
+2026-04-22 07:55:17,258 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/italian_sausage/2_pieces.jpg
+2026-04-22 07:55:17,258 [INFO]       Dish: Side of Mixed Vegetables
+2026-04-22 07:55:17,259 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Mixed-Vegetables-Side-OG-dpv-1180x730.jpg
+2026-04-22 07:55:20,156 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/side_of_mixed_vegetables/1.jpg
+2026-04-22 07:55:20,156 [INFO]       Dish: Side of Mashed Potatoes
+2026-04-22 07:55:20,157 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Kids-Mashed-Potatoes-dpv-1180x730.jpg
+2026-04-22 07:55:23,765 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/side_of_mashed_potatoes/1.jpg
+2026-04-22 07:55:23,766 [INFO]       Dish: Side of Broccoli (V)
+2026-04-22 07:55:23,767 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Broccoli-Side-dpv-1180X730.jpg
+2026-04-22 07:55:27,092 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/side_of_broccoli_v/1.jpg
+2026-04-22 07:55:27,093 [INFO]       Dish: Marinara Sauce
+2026-04-22 07:55:27,093 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:29,836 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/marinara_sauce/regular.jpg
+2026-04-22 07:55:29,836 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:30,558 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/marinara_sauce/large_1.jpg
+2026-04-22 07:55:30,558 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Pint-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:31,553 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/marinara_sauce/pint_2.jpg
+2026-04-22 07:55:31,554 [INFO]       Dish: Alfredo Sauce
+2026-04-22 07:55:31,554 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:55:34,430 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/alfredo_sauce/regular.jpg
+2026-04-22 07:55:34,430 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:55:35,206 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/alfredo_sauce/large_1.jpg
+2026-04-22 07:55:35,206 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Pint-Alfredo-Sauce-dpv.jpg
+2026-04-22 07:55:35,973 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/alfredo_sauce/pint_2.jpg
+2026-04-22 07:55:35,974 [INFO]       Dish: Meat Sauce
+2026-04-22 07:55:35,974 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Pint-Meat-Sauce-dpv.jpg
+2026-04-22 07:55:38,983 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/meat_sauce/pint.jpg
+2026-04-22 07:55:38,984 [INFO]       Dish: Five Cheese Marinara Sauce
+2026-04-22 07:55:38,984 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:41,732 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/five_cheese_marinara_sauce/regular.jpg
+2026-04-22 07:55:41,733 [INFO]       -> [1] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:42,568 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/five_cheese_marinara_sauce/large_1.jpg
+2026-04-22 07:55:42,568 [INFO]       -> [2] https://media.olivegarden.com/en_us/images/product/d-Five-Cheese-Marinara-Sauce-dpv.jpg
+2026-04-22 07:55:43,357 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/sides_sauces/five_cheese_marinara_sauce/pint_2.jpg
+2026-04-22 07:55:43,357 [INFO] 
+2026-04-22 07:55:43,357 [INFO]   Category: Non-Alcoholic Drinks
+2026-04-22 07:55:43,357 [INFO]     [Direct dishes]
+2026-04-22 07:55:43,358 [INFO]       Dish: Coffee
+2026-04-22 07:55:43,358 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Espresso-dpv-1180x730.jpg
+2026-04-22 07:55:47,854 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/coffee/1.jpg
+2026-04-22 07:55:47,854 [INFO]       Dish: Cappuccino
+2026-04-22 07:55:47,854 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-cappuccino-with-whipped-cream-dpv.jpg
+2026-04-22 07:55:51,568 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/cappuccino/1.jpg
+2026-04-22 07:55:51,569 [INFO]       Dish: Lavazza Espresso
+2026-04-22 07:55:51,570 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Espresso-gv-590x365.jpg
+2026-04-22 07:55:55,065 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/lavazza_espresso/1.jpg
+2026-04-22 07:55:55,065 [INFO]       Dish: Bellini Peach-Raspberry Iced Tea
+2026-04-22 07:55:55,066 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/BelliniPeachRaspberryIcedTea_1120_WithOrange_dpv.jpg
+2026-04-22 07:55:57,130 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/bellini_peach_raspberry_iced_tea/1.jpg
+2026-04-22 07:55:57,131 [INFO]       Dish: Mango-Strawberry Iced Tea
+2026-04-22 07:55:57,132 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/mango-strawberry-tea-dpv-590x365.jpg
+2026-04-22 07:55:59,853 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/mango_strawberry_iced_tea/1.jpg
+2026-04-22 07:55:59,854 [INFO]       Dish: Classic Lemonade
+2026-04-22 07:55:59,854 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/og-lemonade-dpv-590x365.png
+2026-04-22 07:56:02,230 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/classic_lemonade/1.png
+2026-04-22 07:56:02,231 [INFO]       Dish: Raspberry Lemonade
+2026-04-22 07:56:02,232 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/d-raspberry-lemonade-dpv.JPG
+2026-04-22 07:56:05,185 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/raspberry_lemonade/1.jpg
+2026-04-22 07:56:05,186 [INFO]       Dish: Strawberry-Passion Fruit Limonata
+2026-04-22 07:56:05,187 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/marketing/Strawberry-Passion_Fruit_Limonata_1130x730_01.jpg
+2026-04-22 07:56:07,816 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/strawberry_passion_fruit_limonata/1.jpg
+2026-04-22 07:56:07,818 [INFO] 
+2026-04-22 07:56:07,818 [INFO]     SubCategory: To Go Fountain Drinks
+2026-04-22 07:56:07,819 [INFO]       Dish: Coke
+2026-04-22 07:56:07,819 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:10,430 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/coke/1.jpg
+2026-04-22 07:56:10,431 [INFO]       Dish: Coke Zero
+2026-04-22 07:56:10,431 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:11,144 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/coke_zero/1.jpg
+2026-04-22 07:56:11,145 [INFO]       Dish: Diet Coke
+2026-04-22 07:56:11,146 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:12,113 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/diet_coke/1.jpg
+2026-04-22 07:56:12,114 [INFO]       Dish: Dr. Pepper
+2026-04-22 07:56:12,114 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:12,820 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/dr_pepper/1.jpg
+2026-04-22 07:56:12,821 [INFO]       Dish: Minute Maid Lemonade
+2026-04-22 07:56:12,821 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:13,751 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/minute_maid_lemonade/1.jpg
+2026-04-22 07:56:13,752 [INFO]       Dish: Sprite
+2026-04-22 07:56:13,753 [INFO]       -> [0] https://media.olivegarden.com/en_us/images/product/b-fountain-drinks-dpv.jpg
+2026-04-22 07:56:14,441 [INFO]         OK Uploaded -> https://nyc3.digitaloceanspaces.com/hungrx/restaurants/olive_garden/non_alcoholic_drinks/to_go_fountain_drinks/sprite/1.jpg
+2026-04-22 07:56:15,196 [INFO] 
+2026-04-22 07:56:15,196 [INFO] DB updated: 1 document(s) modified
+2026-04-22 07:56:15,196 [INFO] 
+2026-04-22 07:56:15,196 [INFO] ============================================================
+2026-04-22 07:56:15,196 [INFO] Migration complete.
+2026-04-22 07:56:15,197 [INFO] ============================================================
