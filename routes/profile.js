@@ -16,7 +16,7 @@ const PACE_VALUES = {
 };
 
 const VALID_SEX      = ["Male", "Female", "Other"];
-const VALID_GOAL     = ["Lose weight", "Maintain weight", "Gain muscle"];
+const VALID_GOAL     = ["Lose weight", "Maintain weight", "Gain muscle", "Maintain"];
 const VALID_PACE     = Object.keys(PACE_VALUES);
 const VALID_ACTIVITY = ["Sedentary", "Lightly active", "Moderately active", "Very active"];
 
