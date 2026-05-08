@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 
 const foodLogEntrySchema = new mongoose.Schema(
   {
-    id:           { type: String, required: true },
-    restaurantId: { type: String, required: true },
-    emoji:        { type: String },
+    id:              { type: String, required: true },
+    restaurantId:    { type: String, default: "" },
+    restaurantName:  { type: String, default: "" },
+    restaurantEmoji: { type: String, default: "🍽️" },
+    emoji:           { type: String },
     name:         { type: String, required: true },
     meal:         { type: String, enum: ["Breakfast", "Lunch", "Dinner", "Snack"], required: true },
     time:         { type: String, required: true },

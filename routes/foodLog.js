@@ -6,9 +6,9 @@ const FoodLog = require("../models/FoodLog");
 
 router.post("/", authMiddleware, async (req, res) => {
   try {
-    const { restaurantId, itemName, emoji, sizeLabel, kcal, meal, time } = req.body;
+    const { restaurantId, restaurantName, restaurantEmoji, itemName, emoji, sizeLabel, kcal, meal, time } = req.body;
 
-    if (!restaurantId || !itemName || !kcal || !meal || !time) {
+    if (!itemName || !kcal || !meal || !time) {
       return res.status(400).json({ success: false, message: "Missing required fields" });
     }
 
@@ -16,7 +16,9 @@ router.post("/", authMiddleware, async (req, res) => {
 
     const entry = {
       id: `log_${uuidv4().replace(/-/g, "").slice(0, 9)}`,
-      restaurantId,
+      restaurantId:    restaurantId    ?? "",
+      restaurantName:  restaurantName  ?? "",
+      restaurantEmoji: restaurantEmoji ?? "🍽️",
       emoji,
       name: itemName,
       meal,
@@ -35,12 +37,15 @@ router.post("/", authMiddleware, async (req, res) => {
     return res.status(200).json({
       success: true,
       data: {
-        id:    entry.id,
-        emoji: entry.emoji,
-        name:  entry.name,
-        meal:  entry.meal,
-        time:  entry.time,
-        kcal:  entry.kcal,
+        id:              entry.id,
+        emoji:           entry.emoji,
+        name:            entry.name,
+        meal:            entry.meal,
+        time:            entry.time,
+        kcal:            entry.kcal,
+        restaurantId:    entry.restaurantId,
+        restaurantName:  entry.restaurantName,
+        restaurantEmoji: entry.restaurantEmoji,
       },
     });
   } catch (error) {
