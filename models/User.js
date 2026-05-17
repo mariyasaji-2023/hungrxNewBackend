@@ -38,6 +38,9 @@ const userSchema = new mongoose.Schema(
       trialDays:          { type: Number, default: 7 },
       freeTrailExpired:   { type: Boolean, default: false },
       subscriptionExpired:{ type: Boolean, default: false },
+      subscriptionExpiry: { type: Date },
+      cancelledAt:        { type: Date },
+      store:              { type: String }, // APP_STORE | PLAY_STORE
     },
 
     // Nutrition Goals

@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema(
-  { restaurantName: String, logo: String },
+  {
+    restaurantName: String,
+    logo:           String,
+    cuisine:        String,
+    rating:         Number,
+  },
   { strict: false, collection: "restaurants" }
 );
 

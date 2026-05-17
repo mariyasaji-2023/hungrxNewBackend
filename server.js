@@ -32,6 +32,12 @@ app.use("/api/v1/restaurant-suggestions", restaurantSuggestionRoutes);
 const deviceRoutes = require("./routes/device");
 app.use("/api/v1/device", deviceRoutes);
 
+const restaurantRoutes = require("./routes/restaurants");
+app.use("/api/v1/restaurants", restaurantRoutes);
+
+const webhookRoutes = require("./routes/webhooks");
+app.use("/api/v1/webhooks", webhookRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });

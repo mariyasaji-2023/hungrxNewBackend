@@ -35,6 +35,10 @@ router.get("/", authMiddleware, async (req, res) => {
         (Date.now() - new Date(sub.trialStartDate).getTime()) / (1000 * 60 * 60 * 24)
       );
       trialDaysLeft = Math.max(0, (sub.trialDays || 7) - elapsed);
+      if (trialDaysLeft === 0) {
+        user.subscription.freeTrailExpired = true;
+        await user.save();
+      }
     }
 
     const goals = user.nutritionGoals || {};
