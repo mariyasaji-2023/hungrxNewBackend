@@ -24,32 +24,52 @@ const CATEGORY_CUISINE_MAP = {
 
 // ── Mapbox Search Box helpers ──────────────────────────────────────────────
 
-const MAPBOX_CATEGORIES =
-  "fast_food_restaurant,burger_restaurant,sandwich_restaurant," +
-  "ice_cream_shop,pizza_restaurant,mexican_restaurant," +
-  "chinese_restaurant,steakhouse";
+const MAPBOX_CATEGORIES_1 =
+  "fast_food_restaurant,burger_restaurant,sandwich_restaurant,ice_cream_shop";
 
-async function fetchNearbyPOIs(lat, lon) {
+const MAPBOX_CATEGORIES_2 =
+  "pizza_restaurant,mexican_restaurant,chinese_restaurant,steakhouse";
+
+async function fetchPOIGroup(lat, lon, categories, groupLabel) {
   const token = process.env.MAPBOX_TOKEN;
   if (!token) { console.log("[Mapbox] MAPBOX_TOKEN missing"); return []; }
   const url =
-    `${SEARCHBOX_BASE}/category/${MAPBOX_CATEGORIES}` +
+    `${SEARCHBOX_BASE}/category/${categories}` +
     `?proximity=${lon},${lat}` +
     `&limit=25` +
-    `&radius=5` +
+    `&radius=0.04` +
     `&access_token=${token}`;
   try {
     const resp = await fetch(url);
     const data = await resp.json();
-    console.log("[Mapbox] POI status:", resp.status, "| features:", data.features?.length ?? 0);
-    if (!resp.ok) { console.log("[Mapbox] POI error:", JSON.stringify(data.message)); return []; }
+    console.log(`[Mapbox] ${groupLabel} status:`, resp.status, "| features:", data.features?.length ?? 0);
+    if (!resp.ok) { console.log(`[Mapbox] ${groupLabel} error:`, JSON.stringify(data.message)); return []; }
     const features = data.features || [];
-    features.forEach((f, i) => console.log(`[Mapbox] POI ${i + 1}: ${f.properties?.name ?? "unknown"} | categories: ${JSON.stringify(f.properties?.poi_category)}`));
+    features.forEach((f, i) => console.log(`[Mapbox] ${groupLabel} POI ${i + 1}: ${f.properties?.name ?? "unknown"} | categories: ${JSON.stringify(f.properties?.poi_category)}`));
     return features;
   } catch (e) {
-    console.log("[Mapbox] POI fetch failed:", e.message);
+    console.log(`[Mapbox] ${groupLabel} fetch failed:`, e.message);
     return [];
   }
+}
+
+async function fetchNearbyPOIs(lat, lon) {
+  const [group1, group2] = await Promise.all([
+    fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_1, "Group1"),
+    fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_2, "Group2"),
+  ]);
+
+  // Deduplicate by place_id across both groups
+  const seen = new Set();
+  const merged = [];
+  for (const f of [...group1, ...group2]) {
+    const id = f.properties?.mapbox_id || f.properties?.place_id || f.properties?.name;
+    if (id && seen.has(id)) continue;
+    if (id) seen.add(id);
+    merged.push(f);
+  }
+  console.log(`[Mapbox] Merged POIs: ${merged.length} (group1: ${group1.length}, group2: ${group2.length})`);
+  return merged;
 }
 
 async function fetchLocationLabel(lat, lon) {
