@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const User = require("../models/User");
 
 // Verify the secret RevenueCat sends in the Authorization header
@@ -28,7 +29,16 @@ router.post("/revenuecat", async (req, res) => {
     return res.status(400).json({ success: false, message: "Missing app_user_id" });
   }
 
+  // Return 200 for TEST events — no real user to update
+  if (type === "TEST") {
+    return res.status(200).json({ success: true, message: "Test event received" });
+  }
+
   try {
+    if (!mongoose.isValidObjectId(app_user_id)) {
+      return res.status(200).json({ success: false, message: "Invalid user id" });
+    }
+
     const user = await User.findById(app_user_id);
     if (!user) {
       // Return 200 so RevenueCat does not keep retrying for unknown users
