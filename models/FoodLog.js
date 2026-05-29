@@ -13,6 +13,11 @@ const foodLogEntrySchema = new mongoose.Schema(
     date:         { type: String, required: true }, // "YYYY-MM-DD"
     kcal:         { type: Number, required: true },
     sizeLabel:    { type: String },
+    protein:      { type: Number, default: 0 },
+    carbs:        { type: Number, default: 0 },
+    fat:          { type: Number, default: 0 },
+    fiber:        { type: Number, default: 0 },
+    sodium:       { type: Number, default: 0 },
   },
   { _id: false }
 );
