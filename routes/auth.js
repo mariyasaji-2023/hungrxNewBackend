@@ -70,48 +70,44 @@ router.post("/signup", async (req, res) => {
       return res.status(401).json({ success: false, message: "Invalid user" });
     }
 
-    // Check if user already exists
-    let user = await User.findOne({ firebaseUid: decodedToken.uid });
+    const onboardingData = {
+      goal: onboarding?.goal,
+      sex:  onboarding?.sex,
+      age:  onboarding?.age,
+      bodyMetrics: {
+        height:       onboarding?.bodyMetrics?.height,
+        weight:       onboarding?.bodyMetrics?.weight,
+        targetWeight: onboarding?.bodyMetrics?.targetWeight,
+      },
+      lifestyle: {
+        activityLevel: onboarding?.lifestyle?.activityLevel,
+      },
+      planPreference: {
+        pace: onboarding?.planPreference?.pace,
+      },
+    };
 
-    const isNewUser = !user;
-
-    if (isNewUser) {
-      user = await User.create({
-        // Auth
-        firebaseUid: decodedToken.uid,
-        email:       auth.email    || decodedToken.email,
-        name:        auth.name     || decodedToken.name,
-        photoUrl:    auth.photoUrl || decodedToken.picture,
-        provider:    auth.provider || "google",
-
-        // Onboarding
-        onboarding: {
-          goal: onboarding?.goal,
-          sex:  onboarding?.sex,
-          age:  onboarding?.age,
-
-          bodyMetrics: {
-            height:       onboarding?.bodyMetrics?.height,
-            weight:       onboarding?.bodyMetrics?.weight,
-            targetWeight: onboarding?.bodyMetrics?.targetWeight,
-          },
-
-          lifestyle: {
-            activityLevel: onboarding?.lifestyle?.activityLevel,
-          },
-
-          planPreference: {
-            pace: onboarding?.planPreference?.pace,
-          },
+    // Upsert: create if new, update onboarding if the user was pre-created by /login
+    let user = await User.findOneAndUpdate(
+      { firebaseUid: decodedToken.uid },
+      {
+        $set: {
+          email:      auth.email    || decodedToken.email,
+          name:       auth.name     || decodedToken.name,
+          photoUrl:   auth.photoUrl || decodedToken.picture,
+          provider:   auth.provider || "google",
+          onboarding: onboardingData,
+          "meta.platform":   meta?.platform,
+          "meta.appVersion": meta?.appVersion,
         },
-
-        // Meta
-        meta: {
-          platform:   meta?.platform,
-          appVersion: meta?.appVersion,
+        $setOnInsert: {
+          firebaseUid: decodedToken.uid,
         },
-      });
-    }
+      },
+      { upsert: true, new: true }
+    );
+
+    const isNewUser = !user.onboarding?.goal; // treat as new if no prior onboarding
 
     // Sign JWT
     const appToken = jwt.sign(
@@ -120,12 +116,12 @@ router.post("/signup", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    return res.status(isNewUser ? 201 : 200).json({
+    return res.status(201).json({
       success:   true,
-      message:   isNewUser ? "Sign-up successful" : "User already exists",
+      message:   "Sign-up successful",
       token:     appToken,
       userId:    user._id,
-      isNewUser,
+      isNewUser: true,
       user: {
         name:     user.name,
         email:    user.email,

@@ -72,7 +72,10 @@ router.get("/", authMiddleware, async (req, res) => {
       : [];
     const restaurantMap = new Map(dbRestaurants.map((r) => [r._id.toString(), r]));
 
-    const caloriesConsumed = todayEntries.reduce((sum, e) => sum + e.kcal, 0);
+    const caloriesConsumed = todayEntries.reduce((sum, e) => sum + (e.kcal    || 0), 0);
+    const proteinConsumed  = todayEntries.reduce((sum, e) => sum + (e.protein || 0), 0);
+    const carbsConsumed    = todayEntries.reduce((sum, e) => sum + (e.carbs   || 0), 0);
+    const fatConsumed      = todayEntries.reduce((sum, e) => sum + (e.fat     || 0), 0);
 
     const onboardingComplete = !!(
       user.onboarding?.goal &&
@@ -115,15 +118,15 @@ router.get("/", authMiddleware, async (req, res) => {
           consumed: caloriesConsumed,
           goal:     goals.calories || 2000,
           protein: {
-            consumed: 0,
+            consumed: proteinConsumed,
             goal:     goals.protein || 150,
           },
           carbs: {
-            consumed: 0,
+            consumed: carbsConsumed,
             goal:     goals.carbs || 250,
           },
           fat: {
-            consumed: 0,
+            consumed: fatConsumed,
             goal:     goals.fat || 65,
           },
         },
