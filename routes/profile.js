@@ -4,6 +4,7 @@ const authMiddleware = require("../middleware/auth");
 const User = require("../models/User");
 const FoodLog = require("../models/FoodLog");
 const DeviceToken = require("../models/DeviceToken");
+const admin = require("../firebase");
 
 const PACE_LABELS = {
   0.25: "Slow (0.25 kg/wk)",
@@ -191,8 +192,9 @@ router.delete("/", authMiddleware, async (req, res) => {
       DeviceToken.deleteMany({ userId }),
     ]);
 
-    // Delete the user
+    // Delete MongoDB user and Firebase account
     await User.findByIdAndDelete(userId);
+    await admin.auth().deleteUser(user.firebaseUid);
 
     return res.status(200).json({ success: true, message: "Account deleted successfully" });
   } catch (error) {
