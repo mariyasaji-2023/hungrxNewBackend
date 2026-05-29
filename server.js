@@ -38,6 +38,12 @@ app.use("/api/v1/restaurants", restaurantRoutes);
 const webhookRoutes = require("./routes/webhooks");
 app.use("/api/v1/webhooks", webhookRoutes);
 
+const supportRoutes = require("./routes/support");
+app.use("/api/v1/support", supportRoutes);
+
+const userRoutes = require("./routes/user");
+app.use("/api/v1/user", userRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });

@@ -59,6 +59,12 @@ const userSchema = new mongoose.Schema(
 
     // Notifications
     lastCalorieReminderDate: { type: String }, // "YYYY-MM-DD"
+
+    notificationPreferences: {
+      mealReminders: { type: Boolean, default: true },
+      weeklyReport:  { type: Boolean, default: true },
+      promotions:    { type: Boolean, default: false },
+    },
   },
   { timestamps: true }
 );

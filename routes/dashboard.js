@@ -3,6 +3,54 @@ const router = express.Router();
 const authMiddleware = require("../middleware/auth");
 const User = require("../models/User");
 const FoodLog = require("../models/FoodLog");
+const Restaurant = require("../models/Restaurant");
+
+function findDish(restaurant, dishName) {
+  if (!restaurant?.categories) return null;
+  const target = (dishName || "").toLowerCase().trim();
+  for (const cat of restaurant.categories) {
+    for (const dish of cat.dishes || cat.items || []) {
+      if ((dish.dishName || dish.name || "").toLowerCase().trim() === target) return dish;
+    }
+    for (const sub of cat.subcategories || []) {
+      for (const dish of sub.dishes || sub.items || []) {
+        if ((dish.dishName || dish.name || "").toLowerCase().trim() === target) return dish;
+      }
+    }
+  }
+  return null;
+}
+
+function extractNutrition(dish, sizeLabel) {
+  const empty = { protein: 0, carbs: 0, fat: 0, fiber: 0, sodium: 0 };
+  if (!dish) return empty;
+  const servingInfos = dish.servingInfos || dish.sizes || [];
+  let entry = sizeLabel
+    ? servingInfos.find((e) => ((e.servingInfo || e).size || "").toLowerCase() === sizeLabel.toLowerCase())
+    : null;
+  if (!entry) entry = servingInfos[0];
+  if (!entry) return empty;
+  const nf = (entry.servingInfo || entry).nutritionFacts || {};
+  return {
+    protein: Math.round(Number(nf.protein?.value)        || 0),
+    carbs:   Math.round(Number(nf.carbs?.value)           || 0),
+    fat:     Math.round(Number(nf.totalFat?.value)        || 0),
+    fiber:   Math.round(Number(nf.fiber?.value ?? nf.dietaryFiber?.value) || 0),
+    sodium:  Math.round(Number(nf.sodium?.value)          || 0),
+  };
+}
+
+function extractLocation(restaurant) {
+  if (!restaurant) return null;
+  const loc = restaurant.location || null;
+  if (loc?.latitude != null && loc?.longitude != null) {
+    return { latitude: loc.latitude, longitude: loc.longitude, address: loc.address || "" };
+  }
+  if (restaurant.latitude != null && restaurant.longitude != null) {
+    return { latitude: restaurant.latitude, longitude: restaurant.longitude, address: restaurant.address || "" };
+  }
+  return null;
+}
 
 router.get("/", authMiddleware, async (req, res) => {
   try {
@@ -17,6 +65,12 @@ router.get("/", authMiddleware, async (req, res) => {
     const todayEntries = foodLogDoc
       ? foodLogDoc.history.filter((e) => e.date === today)
       : [];
+
+    const restaurantIds = [...new Set(todayEntries.map((e) => e.restaurantId).filter(Boolean))];
+    const dbRestaurants = restaurantIds.length
+      ? await Restaurant.find({ _id: { $in: restaurantIds } }).lean()
+      : [];
+    const restaurantMap = new Map(dbRestaurants.map((r) => [r._id.toString(), r]));
 
     const caloriesConsumed = todayEntries.reduce((sum, e) => sum + e.kcal, 0);
 
@@ -73,17 +127,28 @@ router.get("/", authMiddleware, async (req, res) => {
             goal:     goals.fat || 65,
           },
         },
-        foodLog: todayEntries.map((e) => ({
-          id:              e.id,
-          emoji:           e.emoji,
-          name:            e.name,
-          meal:            e.meal,
-          time:            e.time,
-          kcal:            e.kcal,
-          restaurantId:    e.restaurantId    ?? "",
-          restaurantName:  e.restaurantName  ?? "",
-          restaurantEmoji: e.restaurantEmoji ?? "🍽️",
-        })),
+        foodLog: todayEntries.map((e) => {
+          const restaurant = restaurantMap.get(e.restaurantId) || null;
+          const dish = findDish(restaurant, e.name);
+          const dishImageUrl =
+            dish?.servingInfos?.[0]?.servingInfo?.Url ||
+            dish?.servingInfos?.[0]?.servingInfo?.imageUrl ||
+            dish?.imageUrl || "";
+          return {
+            id:                  e.id,
+            name:                e.name,
+            meal:                e.meal,
+            time:                e.time,
+            kcal:                e.kcal,
+            restaurantId:        e.restaurantId    ?? "",
+            restaurantName:      e.restaurantName  ?? "",
+            restaurantEmoji:     e.restaurantEmoji ?? "🍽️",
+            restaurantImageUrl:  restaurant?.logo || restaurant?.imageUrl || "",
+            dishImageUrl,
+            restaurantLocation:  extractLocation(restaurant),
+            nutrition:           extractNutrition(dish, e.sizeLabel),
+          };
+        }),
       },
     });
   } catch (error) {

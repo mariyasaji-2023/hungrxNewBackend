@@ -59,7 +59,6 @@ async function fetchNearbyPOIs(lat, lon) {
     fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_2, "Group2"),
   ]);
 
-  // Deduplicate by place_id across both groups
   const seen = new Set();
   const merged = [];
   for (const f of [...group1, ...group2]) {
@@ -98,8 +97,8 @@ async function fetchLocationLabel(lat, lon) {
 function normalizeName(name) {
   return (name || "")
     .toLowerCase()
-    .replace(/[''`]/g, "")        // remove apostrophes
-    .replace(/[^a-z0-9\s]/g, " ") // other punctuation → space
+    .replace(/[''`]/g, "")
+    .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -144,26 +143,23 @@ function mapItems(dishes) {
   }));
 }
 
-function mapCategories(categories) {
+// Flattens subcategories into a single items array for the menu endpoint.
+// Empty categories (no items after flattening) are omitted.
+function mapCategoriesForMenu(categories) {
   if (!Array.isArray(categories)) return [];
-  return categories.map((cat) => {
+  const result = [];
+  for (const cat of categories) {
     const rawSubs = cat.subcategories || [];
+    let items;
     if (rawSubs.length > 0) {
-      return {
-        name: cat.categoryName || cat.name || "",
-        subcategories: rawSubs.map((sub) => ({
-          name:  sub.subcategoryName || sub.name || "",
-          items: mapItems(sub.dishes || sub.items || []),
-        })),
-        items: [],
-      };
+      items = rawSubs.flatMap((sub) => mapItems(sub.dishes || sub.items || []));
+    } else {
+      items = mapItems(cat.dishes || cat.items || []);
     }
-    return {
-      name:          cat.categoryName || cat.name || "",
-      subcategories: [],
-      items:         mapItems(cat.dishes || cat.items || []),
-    };
-  });
+    if (items.length === 0) continue;
+    result.push({ name: cat.categoryName || cat.name || "", items });
+  }
+  return result;
 }
 
 function cuisineFromCategories(poiCategories) {
@@ -178,15 +174,32 @@ function formatDistance(meters) {
   return `${(meters / 1000).toFixed(1)} km`;
 }
 
-// ── Route ─────────────────────────────────────────────────────────────────
+// ── Cursor helpers ─────────────────────────────────────────────────────────
+
+function encodeCursor(id, distKm) {
+  return Buffer.from(JSON.stringify({ id, dist: distKm })).toString("base64");
+}
+
+function decodeCursor(cursor) {
+  try {
+    const parsed = JSON.parse(Buffer.from(cursor, "base64").toString("utf8"));
+    if (typeof parsed.id !== "string" || typeof parsed.dist !== "number") return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+// ── POST /nearby ───────────────────────────────────────────────────────────
 
 router.post("/nearby", authMiddleware, async (req, res) => {
-  const { latitude, longitude } = req.body;
+  const { latitude, longitude, cursor = null } = req.body;
+  let { limit = 15 } = req.body;
 
   if (latitude == null || longitude == null) {
     return res.status(400).json({
       success: false,
-      message: "latitude and longitude are required",
+      error: { code: "LOCATION_REQUIRED", message: "latitude and longitude are required." },
     });
   }
 
@@ -196,8 +209,27 @@ router.post("/nearby", authMiddleware, async (req, res) => {
   if (isNaN(userLat) || isNaN(userLon)) {
     return res.status(400).json({
       success: false,
-      message: "latitude and longitude are required",
+      error: { code: "LOCATION_REQUIRED", message: "latitude and longitude must be valid numbers." },
     });
+  }
+
+  limit = Math.min(Math.max(1, Number(limit) || 15), 30);
+  if (Number(req.body.limit) > 30) {
+    return res.status(400).json({
+      success: false,
+      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 30." },
+    });
+  }
+
+  let cursorData = null;
+  if (cursor) {
+    cursorData = decodeCursor(cursor);
+    if (!cursorData) {
+      return res.status(400).json({
+        success: false,
+        error: { code: "INVALID_CURSOR", message: "The cursor value is invalid or expired." },
+      });
+    }
   }
 
   try {
@@ -221,49 +253,121 @@ router.post("/nearby", authMiddleware, async (req, res) => {
         namesMatch(mapboxName, r.restaurantName || r.name || "")
       );
       if (!dbMatch) continue;
-      console.log(`[Match] "${mapboxName}" → DB: "${dbMatch.restaurantName || dbMatch.name}"`)
+      console.log(`[Match] "${mapboxName}" → DB: "${dbMatch.restaurantName || dbMatch.name}"`);
 
       const [rLon, rLat] = feature.geometry?.coordinates || [];
-      const distanceMeters = typeof props.distance === "number"
-        ? props.distance
-        : null;
+      const distanceMeters = typeof props.distance === "number" ? props.distance : null;
+      const distKm = distanceMeters != null ? distanceMeters / 1000 : Infinity;
 
       restaurants.push({
         id:       dbMatch._id.toString(),
         name:     dbMatch.restaurantName || dbMatch.name || mapboxName,
         imageUrl: dbMatch.logo || dbMatch.imageUrl || "",
         cuisine:  dbMatch.cuisine || cuisineFromCategories(props.poi_category),
-        rating:   dbMatch.rating ?? 0,
         distance: distanceMeters != null ? formatDistance(distanceMeters) : "",
+        distKm,
         location: {
           latitude:  rLat   ?? props.coordinates?.latitude  ?? 0,
           longitude: rLon   ?? props.coordinates?.longitude ?? 0,
           address:   props.full_address || props.address || "",
         },
-        categories: mapCategories(dbMatch.categories),
       });
     }
 
-    // keep only the nearest branch per DB restaurant
+    // Keep only the nearest branch per DB restaurant, sorted ascending by distance
     const nearest = new Map();
     for (const r of restaurants) {
       const prev = nearest.get(r.id);
-      const d = parseFloat(r.distance) || Infinity;
-      if (!prev || d < (parseFloat(prev.distance) || Infinity)) nearest.set(r.id, r);
+      if (!prev || r.distKm < prev.distKm) nearest.set(r.id, r);
     }
-    const deduped = Array.from(nearest.values()).sort((a, b) => {
-      const da = parseFloat(a.distance) || Infinity;
-      const db = parseFloat(b.distance) || Infinity;
-      return da - db;
-    });
+    const deduped = Array.from(nearest.values()).sort((a, b) => a.distKm - b.distKm);
+
+    // Apply cursor-based pagination
+    let startIndex = 0;
+    if (cursorData) {
+      const pos = deduped.findIndex((r) => r.id === cursorData.id);
+      startIndex = pos === -1 ? 0 : pos + 1;
+    }
+
+    const page = deduped.slice(startIndex, startIndex + limit);
+    const hasMore = startIndex + limit < deduped.length;
+    const lastItem = page[page.length - 1];
+    const nextCursor = hasMore && lastItem ? encodeCursor(lastItem.id, lastItem.distKm) : null;
+
+    // Strip internal distKm before sending
+    const responseRestaurants = page.map(({ distKm: _distKm, ...rest }) => rest);
 
     return res.status(200).json({
       success: true,
-      data: { locationLabel, restaurants: deduped },
+      data: {
+        locationLabel,
+        restaurants: responseRestaurants,
+        pagination: {
+          nextCursor,
+          hasMore,
+          total: deduped.length,
+        },
+      },
     });
   } catch (error) {
     console.error("Nearby restaurants error:", error);
     res.status(500).json({ success: false, message: "Failed to fetch restaurants" });
+  }
+});
+
+// ── GET /:restaurantId/menu ────────────────────────────────────────────────
+
+router.get("/:restaurantId/menu", authMiddleware, async (req, res) => {
+  const { restaurantId } = req.params;
+  let categoryIndex = Math.max(0, parseInt(req.query.categoryIndex, 10) || 0);
+  let limit = parseInt(req.query.limit, 10);
+  if (isNaN(limit) || limit < 1) limit = 2;
+
+  if (limit > 5) {
+    return res.status(400).json({
+      success: false,
+      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 5 for menu categories." },
+    });
+  }
+
+  try {
+    const restaurant = await Restaurant.findById(restaurantId).lean();
+    if (!restaurant) {
+      return res.status(404).json({
+        success: false,
+        error: { code: "RESTAURANT_NOT_FOUND", message: "Restaurant not found." },
+      });
+    }
+
+    const allCategories = mapCategoriesForMenu(restaurant.categories);
+    const totalCategories = allCategories.length;
+    const page = allCategories.slice(categoryIndex, categoryIndex + limit);
+    const nextCategoryIndex = categoryIndex + limit < totalCategories ? categoryIndex + limit : null;
+    const hasMore = nextCategoryIndex !== null;
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        restaurantId,
+        categories: page,
+        pagination: {
+          categoryIndex,
+          nextCategoryIndex,
+          totalCategories,
+          hasMore,
+        },
+      },
+    });
+  } catch (error) {
+    // Mongoose CastError means the ID format is invalid → treat as not found
+    if (error.name === "CastError") {
+      return res.status(404).json({
+        success: false,
+        error: { code: "RESTAURANT_NOT_FOUND", message: "Restaurant not found." },
+      });
+    }
+    console.error("Restaurant menu error:", error);
+    res.status(500).json({ success: false, message: "Failed to fetch menu" });
   }
 });
 
