@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema(
       goal:       { type: String },
       sex:        { type: String },
       age:        { type: Number },
+      unitSystem: { type: String }, // "metric" | "imperial"
 
       bodyMetrics: {
         height:       { value: Number, unit: String },
@@ -26,7 +27,7 @@ const userSchema = new mongoose.Schema(
       },
 
       planPreference: {
-        pace: { value: Number, unit: String },
+        pace: { value: Number, unit: String }, // unit: "kg_per_week" | "lb_per_week"
       },
     },
 

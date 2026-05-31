@@ -3,6 +3,7 @@ const router = express.Router();
 const admin = require("../firebase");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { calculateNutritionGoals, toMetric } = require("../utils/nutrition");
 
 router.post("/login", async (req, res) => {
   try {
@@ -70,10 +71,13 @@ router.post("/signup", async (req, res) => {
       return res.status(401).json({ success: false, message: "Invalid user" });
     }
 
+    const unitSystem = onboarding?.unitSystem || "metric";
+
     const onboardingData = {
-      goal: onboarding?.goal,
-      sex:  onboarding?.sex,
-      age:  onboarding?.age,
+      goal:       onboarding?.goal,
+      sex:        onboarding?.sex,
+      age:        onboarding?.age,
+      unitSystem,
       bodyMetrics: {
         height:       onboarding?.bodyMetrics?.height,
         weight:       onboarding?.bodyMetrics?.weight,
@@ -87,6 +91,28 @@ router.post("/signup", async (req, res) => {
       },
     };
 
+    // Compute personalised nutrition goals from onboarding data
+    const { heightCm, weightKg, targetWeightKg, paceKgPerWeek } = toMetric({
+      height:       onboarding?.bodyMetrics?.height,
+      weight:       onboarding?.bodyMetrics?.weight,
+      targetWeight: onboarding?.bodyMetrics?.targetWeight,
+      pace:         onboarding?.planPreference?.pace,
+      unitSystem,
+    });
+
+    const nutritionGoals = (heightCm && weightKg && onboarding?.age)
+      ? calculateNutritionGoals({
+          heightCm,
+          weightKg,
+          targetWeightKg,
+          paceKgPerWeek,
+          age:           onboarding.age,
+          sex:           onboarding.sex,
+          activityLevel: onboarding?.lifestyle?.activityLevel,
+          goal:          onboarding.goal,
+        })
+      : null;
+
     // Upsert: create if new, update onboarding if the user was pre-created by /login
     let user = await User.findOneAndUpdate(
       { firebaseUid: decodedToken.uid },
@@ -99,6 +125,12 @@ router.post("/signup", async (req, res) => {
           onboarding: onboardingData,
           "meta.platform":   meta?.platform,
           "meta.appVersion": meta?.appVersion,
+          ...(nutritionGoals && {
+            "nutritionGoals.calories": nutritionGoals.calories,
+            "nutritionGoals.protein":  nutritionGoals.protein,
+            "nutritionGoals.carbs":    nutritionGoals.carbs,
+            "nutritionGoals.fat":      nutritionGoals.fat,
+          }),
         },
         $setOnInsert: {
           firebaseUid: decodedToken.uid,
@@ -127,6 +159,16 @@ router.post("/signup", async (req, res) => {
         email:    user.email,
         photoUrl: user.photoUrl,
       },
+      nutritionPlan: nutritionGoals
+        ? {
+            calories:     nutritionGoals.calories,
+            protein:      nutritionGoals.protein,
+            carbs:        nutritionGoals.carbs,
+            fat:          nutritionGoals.fat,
+            clamped:      nutritionGoals.clamped,
+            weeksToGoal:  nutritionGoals.weeksToGoal,
+          }
+        : null,
     });
 
   } catch (error) {
