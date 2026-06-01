@@ -7,7 +7,7 @@ const { calculateNutritionGoals, toMetric } = require("../utils/nutrition");
 
 router.post("/login", async (req, res) => {
   try {
-    const { idToken, email, name, providerUserId, profileUrl } = req.body;  // ← extract profileUrl
+    const { idToken, providerUserId } = req.body;
 
     if (!idToken) {
       return res.status(400).json({ success: false, message: "ID token required" });
@@ -19,18 +19,10 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ success: false, message: "Invalid user" });
     }
 
-    let user = await User.findOne({ firebaseUid: decodedToken.uid });
+    const user = await User.findOne({ firebaseUid: decodedToken.uid });
 
-    const isNewUser = !user;  // ← track before creating
-
-    if (isNewUser) {
-      user = await User.create({
-        firebaseUid: decodedToken.uid,
-        email:      email || decodedToken.email,
-        name:       name  || decodedToken.name,
-        profileUrl: profileUrl || decodedToken.picture,  // ← Firebase gives photo as `picture`
-        provider: req.body.provider || "google",
-      });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found. Please sign up first." });
     }
 
     const appToken = jwt.sign(
@@ -41,15 +33,14 @@ router.post("/login", async (req, res) => {
 
     res.status(200).json({
       success:    true,
-      message:    isNewUser ? "Sign-up successful" : "Sign-in successful",
+      message:    "Sign-in successful",
       token:      appToken,
       userId:     user._id,
-      profileUrl: user.profileUrl,   // ← include in response
-      isNewUser,
+      profileUrl: user.profileUrl,
     });
 
   } catch (error) {
-    console.error("Google login error:", error);
+    console.error("Login error:", error);
     res.status(401).json({ success: false, message: "Invalid token" });
   }
 });
@@ -113,33 +104,28 @@ router.post("/signup", async (req, res) => {
         })
       : null;
 
-    // Upsert: create if new, update onboarding if the user was pre-created by /login
-    let user = await User.findOneAndUpdate(
-      { firebaseUid: decodedToken.uid },
-      {
-        $set: {
-          email:      auth.email    || decodedToken.email,
-          name:       auth.name     || decodedToken.name,
-          photoUrl:   auth.photoUrl || decodedToken.picture,
-          provider:   auth.provider || "google",
-          onboarding: onboardingData,
-          "meta.platform":   meta?.platform,
-          "meta.appVersion": meta?.appVersion,
-          ...(nutritionGoals && {
-            "nutritionGoals.calories": nutritionGoals.calories,
-            "nutritionGoals.protein":  nutritionGoals.protein,
-            "nutritionGoals.carbs":    nutritionGoals.carbs,
-            "nutritionGoals.fat":      nutritionGoals.fat,
-          }),
-        },
-        $setOnInsert: {
-          firebaseUid: decodedToken.uid,
-        },
-      },
-      { upsert: true, new: true }
-    );
+    // Reject if user already exists
+    const existingUser = await User.findOne({ firebaseUid: decodedToken.uid });
+    if (existingUser) {
+      return res.status(409).json({ success: false, message: "User already exists. Please log in." });
+    }
 
-    const isNewUser = !user.onboarding?.goal; // treat as new if no prior onboarding
+    let user = await User.create({
+      firebaseUid: decodedToken.uid,
+      email:      auth.email    || decodedToken.email,
+      name:       auth.name     || decodedToken.name,
+      photoUrl:   auth.photoUrl || decodedToken.picture,
+      provider:   auth.provider || "google",
+      onboarding: onboardingData,
+      "meta.platform":   meta?.platform,
+      "meta.appVersion": meta?.appVersion,
+      ...(nutritionGoals && {
+        "nutritionGoals.calories": nutritionGoals.calories,
+        "nutritionGoals.protein":  nutritionGoals.protein,
+        "nutritionGoals.carbs":    nutritionGoals.carbs,
+        "nutritionGoals.fat":      nutritionGoals.fat,
+      }),
+    });
 
     // Sign JWT
     const appToken = jwt.sign(
@@ -153,7 +139,6 @@ router.post("/signup", async (req, res) => {
       message:   "Sign-up successful",
       token:     appToken,
       userId:    user._id,
-      isNewUser: true,
       user: {
         name:     user.name,
         email:    user.email,
