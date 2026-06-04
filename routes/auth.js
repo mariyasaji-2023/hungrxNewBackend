@@ -3,7 +3,7 @@ const router = express.Router();
 const admin = require("../firebase");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const { calculateNutritionGoals, toMetric } = require("../utils/nutrition");
+const { calculateNutritionGoals, toMetric, normalizePace } = require("../utils/nutrition");
 
 router.post("/login", async (req, res) => {
   try {
@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ success: false, message: "ID token required" });
     }
 
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await admin.auth().verifyIdToken(idToken, true);
 
     if (providerUserId && decodedToken.uid !== providerUserId) {
       return res.status(401).json({ success: false, message: "Invalid user" });
@@ -54,8 +54,8 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ success: false, message: "ID token required" });
     }
 
-    // Verify Firebase token
-    const decodedToken = await admin.auth().verifyIdToken(auth.idToken);
+    // Verify Firebase token (checkRevoked=true rejects tokens from deleted/revoked users)
+    const decodedToken = await admin.auth().verifyIdToken(auth.idToken, true);
 
     // Match UID
     if (auth.providerUserId && decodedToken.uid !== auth.providerUserId) {
@@ -78,7 +78,7 @@ router.post("/signup", async (req, res) => {
         activityLevel: onboarding?.lifestyle?.activityLevel,
       },
       planPreference: {
-        pace: onboarding?.planPreference?.pace,
+        pace: normalizePace(onboarding?.planPreference?.pace),
       },
     };
 
@@ -104,8 +104,14 @@ router.post("/signup", async (req, res) => {
         })
       : null;
 
-    // Reject if user already exists
-    const existingUser = await User.findOne({ firebaseUid: decodedToken.uid });
+    // Reject if user already exists (by Firebase UID or email)
+    const signupEmail = auth.email || decodedToken.email;
+    const existingUser = await User.findOne({
+      $or: [
+        { firebaseUid: decodedToken.uid },
+        ...(signupEmail ? [{ email: signupEmail }] : []),
+      ],
+    });
     if (existingUser) {
       return res.status(409).json({ success: false, message: "User already exists. Please log in." });
     }

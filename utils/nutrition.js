@@ -17,6 +17,26 @@ const PACE_VALUES = {
   "Fast (1 kg/wk)":       { value: 1,    unit: "kg_per_week" },
 };
 
+// Canonical metric tiers used for snapping
+const PACE_TIERS = [0.25, 0.5, 1.0];
+
+// Accepts { value, unit } in either kg_per_week or lb_per_week.
+// Converts to kg/week, snaps to the nearest canonical tier, and returns
+// { value, unit: "kg_per_week" } so PACE_LABELS always resolves correctly.
+function normalizePace(pace) {
+  if (!pace?.value || !pace?.unit) return { value: 0.5, unit: "kg_per_week" };
+
+  const kgPerWeek = pace.unit === "lb_per_week"
+    ? pace.value * 0.453592
+    : pace.value;
+
+  const snapped = PACE_TIERS.reduce((nearest, tier) =>
+    Math.abs(tier - kgPerWeek) < Math.abs(nearest - kgPerWeek) ? tier : nearest
+  );
+
+  return { value: snapped, unit: "kg_per_week" };
+}
+
 // Convert raw onboarding bodyMetrics / pace to metric for calculation.
 // unitSystem "imperial" → ft→cm, lb→kg, lb_per_week→kg_per_week
 function toMetric({ height, weight, targetWeight, pace, unitSystem }) {
@@ -93,4 +113,4 @@ function calculateNutritionGoals({ weightKg, targetWeightKg, heightCm, age, sex,
   return { calories: dailyCalories, protein, carbs, fat, clamped, weeksToGoal };
 }
 
-module.exports = { calculateNutritionGoals, toMetric, PACE_LABELS, PACE_VALUES };
+module.exports = { calculateNutritionGoals, toMetric, normalizePace, PACE_LABELS, PACE_VALUES };

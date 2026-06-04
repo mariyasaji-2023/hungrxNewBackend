@@ -18,6 +18,11 @@ const foodLogEntrySchema = new mongoose.Schema(
     fat:          { type: Number, default: 0 },
     fiber:        { type: Number, default: 0 },
     sodium:       { type: Number, default: 0 },
+    location: {
+      latitude:  { type: Number },
+      longitude: { type: Number },
+      address:   { type: String },
+    },
   },
   { _id: false }
 );

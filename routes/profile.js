@@ -7,6 +7,7 @@ const DeviceToken = require("../models/DeviceToken");
 const Feedback = require("../models/Feedback");
 const RestaurantSuggestion = require("../models/RestaurantSuggestion");
 const admin = require("../firebase");
+const Support = require("../models/Support");
 const { calculateNutritionGoals, PACE_LABELS, PACE_VALUES } = require("../utils/nutrition");
 
 const VALID_SEX      = ["Male", "Female", "Other"];
@@ -159,6 +160,7 @@ router.delete("/", authMiddleware, async (req, res) => {
       DeviceToken.deleteMany({ userId }),
       Feedback.deleteMany({ userId }),
       RestaurantSuggestion.deleteMany({ userId }),
+      Support.deleteMany({ userId }),
     ]);
 
     return res.status(200).json({ success: true, message: "Account deleted successfully" });

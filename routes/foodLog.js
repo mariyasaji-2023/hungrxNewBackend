@@ -6,7 +6,7 @@ const FoodLog = require("../models/FoodLog");
 
 router.post("/", authMiddleware, async (req, res) => {
   try {
-    const { restaurantId, restaurantName, restaurantEmoji, itemName, emoji, sizeLabel, kcal, protein, carbs, fat, meal, time } = req.body;
+    const { restaurantId, restaurantName, restaurantEmoji, itemName, emoji, sizeLabel, kcal, protein, carbs, fat, meal, time, location } = req.body;
 
     if (!itemName || !kcal || !meal || !time) {
       return res.status(400).json({ success: false, message: "Missing required fields" });
@@ -29,6 +29,9 @@ router.post("/", authMiddleware, async (req, res) => {
       protein: protein ?? 0,
       carbs:   carbs   ?? 0,
       fat:     fat     ?? 0,
+      ...(location?.latitude != null && location?.longitude != null
+        ? { location: { latitude: location.latitude, longitude: location.longitude, address: location.address ?? "" } }
+        : {}),
     };
 
     await FoodLog.findOneAndUpdate(
