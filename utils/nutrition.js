@@ -37,6 +37,10 @@ const PACE_VALUES = {
   "Slow (0.25 kg/wk)":    { value: 0.25, unit: "kg_per_week" },
   "Moderate (0.5 kg/wk)": { value: 0.5,  unit: "kg_per_week" },
   "Fast (1 kg/wk)":       { value: 1,    unit: "kg_per_week" },
+  // Imperial aliases sent by the app when unitSystem is "imperial"
+  "Slow (0.5 lb/wk)":     { value: 0.25, unit: "kg_per_week" },
+  "Moderate (1 lb/wk)":   { value: 0.5,  unit: "kg_per_week" },
+  "Fast (2 lb/wk)":       { value: 1,    unit: "kg_per_week" },
 };
 
 // Canonical metric tiers used for snapping
