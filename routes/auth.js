@@ -40,7 +40,20 @@ router.post("/login", async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Login error:", error.code, error.message);
+    const code = error.code || "";
+    if (code === "auth/id-token-expired") {
+      return res.status(401).json({ success: false, message: "Firebase token expired. Please sign in again." });
+    }
+    if (code === "auth/id-token-revoked" || code === "auth/user-disabled") {
+      return res.status(401).json({ success: false, message: "Account access revoked. Please sign up again." });
+    }
+    if (code === "auth/user-not-found") {
+      return res.status(404).json({ success: false, message: "Firebase account not found. Please sign up." });
+    }
+    if (code === "auth/argument-error" || code === "auth/invalid-id-token") {
+      return res.status(400).json({ success: false, message: "Malformed Firebase token." });
+    }
     res.status(401).json({ success: false, message: "Invalid token" });
   }
 });
