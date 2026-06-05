@@ -137,6 +137,8 @@ router.get("/", authMiddleware, async (req, res) => {
             dish?.servingInfos?.[0]?.servingInfo?.Url ||
             dish?.servingInfos?.[0]?.servingInfo?.imageUrl ||
             dish?.imageUrl || "";
+          const restaurantLocation = extractLocation(restaurant) ||
+            (e.location?.latitude != null ? { latitude: e.location.latitude, longitude: e.location.longitude, address: e.location.address || "" } : null);
           return {
             id:                  e.id,
             name:                e.name,
@@ -148,7 +150,7 @@ router.get("/", authMiddleware, async (req, res) => {
             restaurantEmoji:     e.restaurantEmoji ?? "🍽️",
             restaurantImageUrl:  restaurant?.logo || restaurant?.imageUrl || "",
             dishImageUrl,
-            restaurantLocation:  extractLocation(restaurant),
+            restaurantLocation,
             nutrition:           extractNutrition(dish, e.sizeLabel),
           };
         }),
