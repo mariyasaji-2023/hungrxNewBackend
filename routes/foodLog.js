@@ -59,6 +59,7 @@ router.post("/", authMiddleware, async (req, res) => {
           fiber:   0,
           sodium:  0,
         },
+        ...(entry.location ? { location: entry.location } : {}),
       },
     });
   } catch (error) {
