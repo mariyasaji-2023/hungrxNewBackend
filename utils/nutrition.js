@@ -5,6 +5,28 @@ const ACTIVITY_MULTIPLIERS = {
   "Very active":        1.725,
 };
 
+const GOAL_NORMALIZE = {
+  "lose_weight":     "Lose weight",
+  "lose weight":     "Lose weight",
+  "gain_weight":     "Gain weight",
+  "gain weight":     "Gain weight",
+  "gain_muscle":     "Gain muscle",
+  "gain muscle":     "Gain muscle",
+  "maintain_weight": "Maintain weight",
+  "maintain weight": "Maintain weight",
+  "maintain":        "Maintain",
+};
+
+const ACTIVITY_NORMALIZE = {
+  "sedentary":          "Sedentary",
+  "lightly_active":     "Lightly active",
+  "lightly active":     "Lightly active",
+  "moderately_active":  "Moderately active",
+  "moderately active":  "Moderately active",
+  "very_active":        "Very active",
+  "very active":        "Very active",
+};
+
 const PACE_LABELS = {
   0.25: "Slow (0.25 kg/wk)",
   0.5:  "Moderate (0.5 kg/wk)",
@@ -65,6 +87,10 @@ function toMetric({ height, weight, targetWeight, pace, unitSystem }) {
 // All inputs must be in metric (cm, kg).
 // Returns { calories, protein, carbs, fat, clamped, weeksToGoal }
 function calculateNutritionGoals({ weightKg, targetWeightKg, heightCm, age, sex, activityLevel, goal, paceKgPerWeek }) {
+  goal          = GOAL_NORMALIZE[goal?.toLowerCase()]          || goal;
+  activityLevel = ACTIVITY_NORMALIZE[activityLevel?.toLowerCase()] || activityLevel;
+  sex           = sex ? (sex.charAt(0).toUpperCase() + sex.slice(1).toLowerCase()) : sex;
+
   // Step 1 — BMR (Mifflin-St Jeor)
   const bmrConstant = sex === "Female" ? -161 : 5;
   const bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + bmrConstant;
