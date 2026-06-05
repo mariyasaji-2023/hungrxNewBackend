@@ -143,13 +143,13 @@ router.delete("/", authMiddleware, async (req, res) => {
       return res.status(404).json({ success: false, message: "User not found" });
     }
 
-    // Delete Firebase account first so the user loses access immediately.
-    // Ignore "user-not-found" in case Firebase was already cleaned up.
-    try {
-      await admin.auth().deleteUser(user.firebaseUid);
-    } catch (firebaseError) {
-      if (firebaseError.code !== "auth/user-not-found") {
-        throw firebaseError;
+    // Delete Firebase account if a UID exists; log and continue on any error
+    // so MongoDB cleanup always runs even if Firebase fails.
+    if (user.firebaseUid) {
+      try {
+        await admin.auth().deleteUser(user.firebaseUid);
+      } catch (firebaseError) {
+        console.error("Firebase delete error (non-fatal):", firebaseError.code, firebaseError.message);
       }
     }
 
