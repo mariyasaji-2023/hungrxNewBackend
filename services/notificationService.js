@@ -5,6 +5,7 @@ async function sendToToken(tokenDoc, data) {
   try {
     await admin.messaging().send({
       token: tokenDoc.token,
+      notification: { title: data.title, body: data.body },
       data,
       android: { priority: "high" },
       apns: {
@@ -60,4 +61,16 @@ async function sendCalorieReminderToUser(userId, remainingCalories, restaurant) 
   await Promise.allSettled(tokens.map((t) => sendToToken(t, data)));
 }
 
-module.exports = { sendNewRestaurantNotification, sendCalorieReminderToUser };
+async function sendCustomNotification({ userId, title, body }) {
+  const query = userId ? { userId } : {};
+  const tokens = await DeviceToken.find(query);
+  if (!tokens.length) return { sent: 0, total: 0 };
+
+  const data = { type: "custom", title, body };
+  const results = await Promise.allSettled(tokens.map((t) => sendToToken(t, data)));
+  const sent = results.filter((r) => r.value === true).length;
+  console.log(`[FCM] Custom notification: ${sent}/${tokens.length} delivered`);
+  return { sent, total: tokens.length };
+}
+
+module.exports = { sendNewRestaurantNotification, sendCalorieReminderToUser, sendCustomNotification };

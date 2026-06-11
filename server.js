@@ -44,6 +44,9 @@ app.use("/api/v1/support", supportRoutes);
 const userRoutes = require("./routes/user");
 app.use("/api/v1/user", userRoutes);
 
+const notificationRoutes = require("./routes/notification");
+app.use("/api/v1/notifications", notificationRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });

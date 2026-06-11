@@ -85,11 +85,24 @@ router.put("/", authMiddleware, async (req, res) => {
 
     const paceData = PACE_VALUES[pace];
 
+    const isImperial = unitSystem === "imperial";
+
+    // Convert incoming values to metric for nutrition calculation.
+    // The app sends feet/lbs when unitSystem is "imperial".
+    const heightCm_metric      = isImperial ? heightCm      * 30.48    : heightCm;
+    const weightKg_metric      = isImperial ? weightKg      * 0.453592 : weightKg;
+    const targetWeightKg_metric = isImperial ? targetWeightKg * 0.453592 : targetWeightKg;
+
     // Recalculate calorie + macro goals based on updated profile
     const nutritionGoals = calculateNutritionGoals({
-      weightKg, targetWeightKg, heightCm, age, sex, activityLevel, goal,
+      weightKg: weightKg_metric, targetWeightKg: targetWeightKg_metric,
+      heightCm: heightCm_metric, age, sex, activityLevel, goal,
       paceKgPerWeek: paceData.value,
     });
+
+    // Store raw values with their actual units so toMetric() works correctly elsewhere.
+    const heightUnit       = isImperial ? "ft"  : "cm";
+    const weightUnit       = isImperial ? "lbs" : "kg";
 
     const user = await User.findByIdAndUpdate(
       req.user.id,
@@ -101,9 +114,9 @@ router.put("/", authMiddleware, async (req, res) => {
           "onboarding.sex":                         sex,
           "onboarding.age":                         age,
           ...(unitSystem && { "onboarding.unitSystem": unitSystem }),
-          "onboarding.bodyMetrics.height":          { value: heightCm,       unit: "cm" },
-          "onboarding.bodyMetrics.weight":          { value: weightKg,       unit: "kg" },
-          "onboarding.bodyMetrics.targetWeight":    { value: targetWeightKg, unit: "kg" },
+          "onboarding.bodyMetrics.height":          { value: heightCm,       unit: heightUnit },
+          "onboarding.bodyMetrics.weight":          { value: weightKg,       unit: weightUnit },
+          "onboarding.bodyMetrics.targetWeight":    { value: targetWeightKg, unit: weightUnit },
           "onboarding.lifestyle.activityLevel":     activityLevel,
           "onboarding.planPreference.pace":         paceData,
           "nutritionGoals.calories":                nutritionGoals.calories,
