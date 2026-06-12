@@ -44,14 +44,31 @@ async function sendNewRestaurantNotification(restaurant) {
   console.log(`[FCM] New restaurant: ${sent}/${tokens.length} delivered`);
 }
 
-async function sendCalorieReminderToUser(userId, remainingCalories, restaurant) {
+const MEAL_CONFIG = {
+  breakfast: {
+    title: "Good morning! 🌅",
+    body:  (kcal, name) => `You have ${kcal} kcal for today. Start your day with ${name}!`,
+  },
+  lunch: {
+    title: "Lunch time! 🍱",
+    body:  (kcal, name) => `You have ${kcal} kcal left today. Try ${name} nearby!`,
+  },
+  dinner: {
+    title: "Dinner time! 🌙",
+    body:  (kcal, name) => `${kcal} kcal left for today. End the day right at ${name}!`,
+  },
+};
+
+async function sendMealReminderToUser(userId, remainingCalories, restaurant, mealType = "lunch") {
   const tokens = await DeviceToken.find({ userId });
   if (!tokens.length) return;
 
+  const cfg = MEAL_CONFIG[mealType] || MEAL_CONFIG.lunch;
   const data = {
     type: "calorie_reminder",
-    title: "Lunch time! 🍱",
-    body: `You have ${remainingCalories} kcal left today. Try ${restaurant.restaurantName} nearby!`,
+    mealType,
+    title: cfg.title,
+    body: cfg.body(remainingCalories, restaurant.restaurantName),
     remainingCalories: String(remainingCalories),
     suggestedRestaurantId: String(restaurant._id),
     suggestedRestaurantName: restaurant.restaurantName,
@@ -59,6 +76,11 @@ async function sendCalorieReminderToUser(userId, remainingCalories, restaurant) 
   };
 
   await Promise.allSettled(tokens.map((t) => sendToToken(t, data)));
+}
+
+// kept for backward compatibility
+async function sendCalorieReminderToUser(userId, remainingCalories, restaurant) {
+  return sendMealReminderToUser(userId, remainingCalories, restaurant, "lunch");
 }
 
 async function sendCustomNotification({ userId, title, body }) {
@@ -73,4 +95,4 @@ async function sendCustomNotification({ userId, title, body }) {
   return { sent, total: tokens.length };
 }
 
-module.exports = { sendNewRestaurantNotification, sendCalorieReminderToUser, sendCustomNotification };
+module.exports = { sendNewRestaurantNotification, sendMealReminderToUser, sendCalorieReminderToUser, sendCustomNotification };

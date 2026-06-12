@@ -62,7 +62,9 @@ const userSchema = new mongoose.Schema(
     timezone: { type: String, default: "UTC" },
 
     // Notifications
-    lastCalorieReminderDate: { type: String }, // "YYYY-MM-DD"
+    lastCalorieReminderDate:   { type: String }, // "YYYY-MM-DD" (lunch)
+    lastBreakfastReminderDate: { type: String }, // "YYYY-MM-DD"
+    lastDinnerReminderDate:    { type: String }, // "YYYY-MM-DD"
 
     notificationPreferences: {
       mealReminders: { type: Boolean, default: true },
