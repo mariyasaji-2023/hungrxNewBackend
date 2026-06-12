@@ -58,6 +58,9 @@ const userSchema = new mongoose.Schema(
       appVersion: { type: String },
     },
 
+    // Timezone (IANA string, e.g. "America/New_York")
+    timezone: { type: String, default: "UTC" },
+
     // Notifications
     lastCalorieReminderDate: { type: String }, // "YYYY-MM-DD"
 

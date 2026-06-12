@@ -143,9 +143,15 @@ function mapItems(dishes) {
   }));
 }
 
-// Flattens subcategories into a single items array for the menu endpoint.
-// Empty categories (no items after flattening) are omitted.
-function mapCategoriesForMenu(categories) {
+function isMultilevelRestaurant(categories) {
+  if (!Array.isArray(categories)) return false;
+  return categories.some((cat) => {
+    const subs = cat.subcategories || [];
+    return subs.length > 0 && subs.some((sub) => (sub.dishes || sub.items || []).length > 0);
+  });
+}
+
+function mapCategoriesFlat(categories) {
   if (!Array.isArray(categories)) return [];
   const result = [];
   for (const cat of categories) {
@@ -158,6 +164,23 @@ function mapCategoriesForMenu(categories) {
     }
     if (items.length === 0) continue;
     result.push({ name: cat.categoryName || cat.name || "", items });
+  }
+  return result;
+}
+
+function mapCategoriesMultilevel(categories) {
+  if (!Array.isArray(categories)) return [];
+  const result = [];
+  for (const cat of categories) {
+    const rawSubs = cat.subcategories || [];
+    const subcategories = rawSubs
+      .map((sub) => ({
+        name: sub.categoryName || sub.name || "",
+        items: mapItems(sub.dishes || sub.items || []),
+      }))
+      .filter((sub) => sub.items.length > 0);
+    if (subcategories.length === 0) continue;
+    result.push({ name: cat.categoryName || cat.name || "", subcategories });
   }
   return result;
 }
@@ -321,12 +344,12 @@ router.get("/:restaurantId/menu", authMiddleware, async (req, res) => {
   const { restaurantId } = req.params;
   let categoryIndex = Math.max(0, parseInt(req.query.categoryIndex, 10) || 0);
   let limit = parseInt(req.query.limit, 10);
-  if (isNaN(limit) || limit < 1) limit = 2;
+  if (isNaN(limit) || limit < 1) limit = 50;
 
-  if (limit > 5) {
+  if (limit > 100) {
     return res.status(400).json({
       success: false,
-      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 5 for menu categories." },
+      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 100 for menu categories." },
     });
   }
 
@@ -339,7 +362,10 @@ router.get("/:restaurantId/menu", authMiddleware, async (req, res) => {
       });
     }
 
-    const allCategories = mapCategoriesForMenu(restaurant.categories);
+    const multilevel = isMultilevelRestaurant(restaurant.categories);
+    const allCategories = multilevel
+      ? mapCategoriesMultilevel(restaurant.categories)
+      : mapCategoriesFlat(restaurant.categories);
     const totalCategories = allCategories.length;
     const page = allCategories.slice(categoryIndex, categoryIndex + limit);
     const nextCategoryIndex = categoryIndex + limit < totalCategories ? categoryIndex + limit : null;
@@ -349,6 +375,7 @@ router.get("/:restaurantId/menu", authMiddleware, async (req, res) => {
       success: true,
       data: {
         restaurantId,
+        isMultilevel: multilevel,
         categories: page,
         pagination: {
           categoryIndex,

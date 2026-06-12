@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middleware/auth");
 const DeviceToken = require("../models/DeviceToken");
+const User = require("../models/User");
 
 router.post("/register-token", authMiddleware, async (req, res) => {
   try {
-    const { userId, token, platform } = req.body;
+    const { userId, token, platform, timezone } = req.body;
 
     if (!userId) return res.status(400).json({ success: false, message: "userId is required" });
     if (!token)  return res.status(400).json({ success: false, message: "token is required" });
@@ -16,6 +17,10 @@ router.post("/register-token", authMiddleware, async (req, res) => {
       { userId, token, platform },
       { upsert: true, new: true }
     );
+
+    if (timezone) {
+      await User.findByIdAndUpdate(userId, { timezone });
+    }
 
     res.status(200).json({ success: true, message: "Token registered" });
   } catch (err) {
