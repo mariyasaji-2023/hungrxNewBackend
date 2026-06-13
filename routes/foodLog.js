@@ -8,7 +8,7 @@ router.post("/", authMiddleware, async (req, res) => {
   try {
     const { restaurantId, restaurantName, restaurantEmoji, itemName, emoji, sizeLabel, kcal, protein, carbs, fat, meal, time, location } = req.body;
 
-    if (!itemName || !kcal || !meal || !time) {
+    if (!itemName || kcal == null || !meal || !time) {
       return res.status(400).json({ success: false, message: "Missing required fields" });
     }
 
