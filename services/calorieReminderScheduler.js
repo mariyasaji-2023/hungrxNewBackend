@@ -124,7 +124,19 @@ async function runCalorieReminders() {
 
 function startCalorieReminderScheduler() {
   console.log("[MealReminder] Scheduler started — checking hourly for US lunch & IST breakfast/lunch/dinner");
-  setInterval(runCalorieReminders, 60 * 60 * 1000);
+
+  runCalorieReminders();
+
+  const now = new Date();
+  const msUntilNextHour =
+    (60 - now.getMinutes()) * 60 * 1000
+    - now.getSeconds() * 1000
+    - now.getMilliseconds();
+
+  setTimeout(() => {
+    runCalorieReminders();
+    setInterval(runCalorieReminders, 60 * 60 * 1000);
+  }, msUntilNextHour);
 }
 
 module.exports = { startCalorieReminderScheduler, runCalorieReminders };
