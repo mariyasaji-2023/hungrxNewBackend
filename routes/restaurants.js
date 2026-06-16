@@ -146,7 +146,7 @@ function mapItems(dishes) {
 function isMultilevelRestaurant(categories) {
   if (!Array.isArray(categories)) return false;
   return categories.some((cat) => {
-    const subs = cat.subcategories || [];
+    const subs = cat.subCategories || cat.subcategories || [];
     return subs.length > 0 && subs.some((sub) => (sub.dishes || sub.items || []).length > 0);
   });
 }
@@ -155,7 +155,7 @@ function mapCategoriesFlat(categories) {
   if (!Array.isArray(categories)) return [];
   const result = [];
   for (const cat of categories) {
-    const rawSubs = cat.subcategories || [];
+    const rawSubs = cat.subCategories || cat.subcategories || [];
     let items;
     if (rawSubs.length > 0) {
       items = rawSubs.flatMap((sub) => mapItems(sub.dishes || sub.items || []));
@@ -172,10 +172,10 @@ function mapCategoriesMultilevel(categories) {
   if (!Array.isArray(categories)) return [];
   const result = [];
   for (const cat of categories) {
-    const rawSubs = cat.subcategories || [];
+    const rawSubs = cat.subCategories || cat.subcategories || [];
     const subcategories = rawSubs
       .map((sub) => ({
-        name: sub.categoryName || sub.name || "",
+        name: sub.subCategoryName || sub.categoryName || sub.name || "",
         items: mapItems(sub.dishes || sub.items || []),
       }))
       .filter((sub) => sub.items.length > 0);
