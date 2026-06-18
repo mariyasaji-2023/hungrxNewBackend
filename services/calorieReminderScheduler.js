@@ -112,8 +112,14 @@ async function runCalorieReminders() {
         const sentField = MEAL_LAST_SENT_FIELD[meal];
         if (user[sentField] === today) continue;
 
+        // Atomic update — only proceeds if another process hasn't already sent it
+        const updated = await User.findOneAndUpdate(
+          { _id: user._id, [sentField]: { $ne: today } },
+          { [sentField]: today }
+        );
+        if (!updated) continue;
+
         await sendMealReminderToUser(user._id, remaining, restaurant, meal);
-        await User.updateOne({ _id: user._id }, { [sentField]: today });
         console.log(`[MealReminder] ${meal} sent to user ${user._id} (${timezone})`);
       }
     }

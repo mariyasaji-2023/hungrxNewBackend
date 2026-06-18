@@ -173,14 +173,23 @@ function mapCategoriesMultilevel(categories) {
   const result = [];
   for (const cat of categories) {
     const rawSubs = cat.subCategories || cat.subcategories || [];
-    const subcategories = rawSubs
-      .map((sub) => ({
-        name: sub.subCategoryName || sub.categoryName || sub.name || "",
-        items: mapItems(sub.dishes || sub.items || []),
-      }))
-      .filter((sub) => sub.items.length > 0);
-    if (subcategories.length === 0) continue;
-    result.push({ name: cat.categoryName || cat.name || "", subcategories });
+    const catName = cat.categoryName || cat.name || "";
+
+    if (rawSubs.length > 0) {
+      const subcategories = rawSubs
+        .map((sub) => ({
+          name: sub.subCategoryName || sub.categoryName || sub.name || "",
+          items: mapItems(sub.dishes || sub.items || []),
+        }))
+        .filter((sub) => sub.items.length > 0);
+      if (subcategories.length === 0) continue;
+      result.push({ name: catName, subcategories });
+    } else {
+      // Category has dishes directly (no subCategories) — wrap into one subcategory
+      const items = mapItems(cat.dishes || cat.items || []);
+      if (items.length === 0) continue;
+      result.push({ name: catName, subcategories: [{ name: catName, items }] });
+    }
   }
   return result;
 }
