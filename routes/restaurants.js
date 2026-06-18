@@ -36,8 +36,7 @@ async function fetchPOIGroup(lat, lon, categories, groupLabel) {
   const url =
     `${SEARCHBOX_BASE}/category/${categories}` +
     `?proximity=${lon},${lat}` +
-    `&limit=25` +
-    `&radius=0.04` +
+    `&limit=50` +
     `&access_token=${token}`;
   try {
     const resp = await fetch(url);
