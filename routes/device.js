@@ -12,6 +12,7 @@ router.post("/register-token", authMiddleware, async (req, res) => {
     if (!token)  return res.status(400).json({ success: false, message: "token is required" });
     if (!platform) return res.status(400).json({ success: false, message: "platform is required" });
 
+    await DeviceToken.deleteMany({ userId, platform, token: { $ne: token } });
     await DeviceToken.findOneAndUpdate(
       { token },
       { userId, token, platform },
