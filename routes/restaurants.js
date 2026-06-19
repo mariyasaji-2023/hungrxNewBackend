@@ -143,55 +143,36 @@ function mapItems(dishes) {
   }));
 }
 
-function isMultilevelRestaurant(categories) {
-  if (!Array.isArray(categories)) return false;
-  return categories.some((cat) => {
-    const subs = cat.subCategories || cat.subcategories || [];
-    return subs.length > 0 && subs.some((sub) => (sub.dishes || sub.items || []).length > 0);
-  });
+function mapCategory(cat) {
+  const catName = cat.categoryName || cat.name || "";
+  const rawSubs = cat.subCategories || cat.subcategories || [];
+
+  // A real subcategory must have a name different from the parent and contain items.
+  // Same-name wrapping causes the frontend to render an empty drill-down screen.
+  const trueSubs = rawSubs
+    .map((sub) => ({
+      name: sub.subCategoryName || sub.categoryName || sub.name || "",
+      items: mapItems(sub.dishes || sub.items || []),
+    }))
+    .filter((sub) => sub.name !== catName && sub.items.length > 0);
+
+  if (trueSubs.length > 0) {
+    // Multilevel category — subcategories drive rendering, items must be empty.
+    return { name: catName, subcategories: trueSubs, items: [] };
+  }
+
+  // Flat category — gather items directly or by flattening same-name / bare subcategories.
+  let items = mapItems(cat.dishes || cat.items || []);
+  if (items.length === 0) {
+    items = rawSubs.flatMap((sub) => mapItems(sub.dishes || sub.items || []));
+  }
+  if (items.length === 0) return null;
+  return { name: catName, subcategories: [], items };
 }
 
-function mapCategoriesFlat(categories) {
+function mapCategories(categories) {
   if (!Array.isArray(categories)) return [];
-  const result = [];
-  for (const cat of categories) {
-    const rawSubs = cat.subCategories || cat.subcategories || [];
-    let items;
-    if (rawSubs.length > 0) {
-      items = rawSubs.flatMap((sub) => mapItems(sub.dishes || sub.items || []));
-    } else {
-      items = mapItems(cat.dishes || cat.items || []);
-    }
-    if (items.length === 0) continue;
-    result.push({ name: cat.categoryName || cat.name || "", items });
-  }
-  return result;
-}
-
-function mapCategoriesMultilevel(categories) {
-  if (!Array.isArray(categories)) return [];
-  const result = [];
-  for (const cat of categories) {
-    const rawSubs = cat.subCategories || cat.subcategories || [];
-    const catName = cat.categoryName || cat.name || "";
-
-    if (rawSubs.length > 0) {
-      const subcategories = rawSubs
-        .map((sub) => ({
-          name: sub.subCategoryName || sub.categoryName || sub.name || "",
-          items: mapItems(sub.dishes || sub.items || []),
-        }))
-        .filter((sub) => sub.items.length > 0);
-      if (subcategories.length === 0) continue;
-      result.push({ name: catName, subcategories });
-    } else {
-      // Category has dishes directly (no subCategories) — wrap into one subcategory
-      const items = mapItems(cat.dishes || cat.items || []);
-      if (items.length === 0) continue;
-      result.push({ name: catName, subcategories: [{ name: catName, items }] });
-    }
-  }
-  return result;
+  return categories.map(mapCategory).filter(Boolean);
 }
 
 function cuisineFromCategories(poiCategories) {
@@ -371,10 +352,8 @@ router.get("/:restaurantId/menu", authMiddleware, async (req, res) => {
       });
     }
 
-    const multilevel = isMultilevelRestaurant(restaurant.categories);
-    const allCategories = multilevel
-      ? mapCategoriesMultilevel(restaurant.categories)
-      : mapCategoriesFlat(restaurant.categories);
+    const allCategories = mapCategories(restaurant.categories);
+    const multilevel = allCategories.some((cat) => cat.subcategories.length > 0);
     const totalCategories = allCategories.length;
     const page = allCategories.slice(categoryIndex, categoryIndex + limit);
     const nextCategoryIndex = categoryIndex + limit < totalCategories ? categoryIndex + limit : null;
