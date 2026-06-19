@@ -25,7 +25,7 @@ const CATEGORY_CUISINE_MAP = {
 // ── Mapbox Search Box helpers ──────────────────────────────────────────────
 
 const MAPBOX_CATEGORIES_1 =
-  "fast_food_restaurant,burger_restaurant,sandwich_restaurant,ice_cream_shop,coffee_shop,dessert_shop";
+  "fast_food,burger_restaurant,sandwich,ice_cream,coffee_shop";
 
 const MAPBOX_CATEGORIES_2 =
   "pizza_restaurant,mexican_restaurant,chinese_restaurant,steakhouse";
@@ -37,7 +37,6 @@ async function fetchPOIGroup(lat, lon, categories, groupLabel) {
     `${SEARCHBOX_BASE}/category/${categories}` +
     `?proximity=${lon},${lat}` +
     `&limit=25` +
-    `&radius=2` +
     `&access_token=${token}`;
   try {
     const resp = await fetch(url);
@@ -68,6 +67,7 @@ async function fetchNearbyPOIs(lat, lon) {
     merged.push(f);
   }
   console.log(`[Mapbox] Merged POIs: ${merged.length} (group1: ${group1.length}, group2: ${group2.length})`);
+  console.log("[Mapbox] All POI names:", merged.map(f => f.properties?.name ?? "unknown"));
   return merged;
 }
 
