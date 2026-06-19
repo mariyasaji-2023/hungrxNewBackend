@@ -25,7 +25,7 @@ const CATEGORY_CUISINE_MAP = {
 // ── Mapbox Search Box helpers ──────────────────────────────────────────────
 
 const MAPBOX_CATEGORIES_1 =
-  "fast_food_restaurant,burger_restaurant,sandwich_restaurant,ice_cream_shop,coffee_shop";
+  "fast_food_restaurant,burger_restaurant,sandwich_restaurant,ice_cream_shop,coffee_shop,dessert_shop";
 
 const MAPBOX_CATEGORIES_2 =
   "pizza_restaurant,mexican_restaurant,chinese_restaurant,steakhouse";
@@ -37,7 +37,7 @@ async function fetchPOIGroup(lat, lon, categories, groupLabel) {
     `${SEARCHBOX_BASE}/category/${categories}` +
     `?proximity=${lon},${lat}` +
     `&limit=25` +
-    `&radius=0.04` +
+    `&radius=2` +
     `&access_token=${token}`;
   try {
     const resp = await fetch(url);
