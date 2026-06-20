@@ -51,9 +51,10 @@ app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });
 
-const { startCalorieReminderScheduler } = require("./services/calorieReminderScheduler");
+const { startCalorieReminderScheduler, startTestNotificationScheduler } = require("./services/calorieReminderScheduler");
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
   startCalorieReminderScheduler();
+  startTestNotificationScheduler();
 });

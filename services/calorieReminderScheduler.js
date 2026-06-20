@@ -145,4 +145,34 @@ function startCalorieReminderScheduler() {
   }, msUntilNextHour);
 }
 
-module.exports = { startCalorieReminderScheduler, runCalorieReminders };
+function msUntilNextUTC(hour, minute) {
+  const now = new Date();
+  const next = new Date();
+  next.setUTCHours(hour, minute, 0, 0);
+  if (next <= now) next.setUTCDate(next.getUTCDate() + 1);
+  return next - now;
+}
+
+function startTestNotificationScheduler() {
+  const { sendCustomNotification } = require("./notificationService");
+
+  // 11:20 AM IST = 05:50 UTC
+  async function fireTestNotification() {
+    console.log("[TestNotification] Sending 11:20 AM IST notification to all users");
+    try {
+      const result = await sendCustomNotification({
+        title: "HungrX Test Notification 🔔",
+        body: "This is a test message from HungrX!",
+      });
+      console.log(`[TestNotification] Delivered: ${result.sent}/${result.total}`);
+    } catch (err) {
+      console.error("[TestNotification] Error:", err);
+    }
+    setTimeout(fireTestNotification, msUntilNextUTC(5, 50));
+  }
+
+  setTimeout(fireTestNotification, msUntilNextUTC(5, 50));
+  console.log("[TestNotification] Scheduler started — fires daily at 11:20 AM IST (05:50 UTC)");
+}
+
+module.exports = { startCalorieReminderScheduler, runCalorieReminders, startTestNotificationScheduler };
