@@ -5,7 +5,6 @@ async function sendToToken(tokenDoc, data) {
   try {
     await admin.messaging().send({
       token: tokenDoc.token,
-      notification: { title: data.title, body: data.body },
       data,
       android: { priority: "high" },
       apns: {
