@@ -156,13 +156,16 @@ function mapCategory(cat) {
     }))
     .filter((sub) => sub.name !== catName && sub.items.length > 0);
 
+  // Direct items sitting at the category level (used in flat + Structure 4)
+  const directItems = mapItems(cat.dishes || cat.items || []);
+
   if (trueSubs.length > 0) {
-    // Multilevel category — subcategories drive rendering, items must be empty.
-    return { name: catName, subcategories: trueSubs, items: [] };
+    // Multilevel or Structure 4 — include direct items if present alongside subcategories.
+    return { name: catName, subcategories: trueSubs, items: directItems };
   }
 
   // Flat category — gather items directly or by flattening same-name / bare subcategories.
-  let items = mapItems(cat.dishes || cat.items || []);
+  let items = directItems;
   if (items.length === 0) {
     items = rawSubs.flatMap((sub) => mapItems(sub.dishes || sub.items || []));
   }
