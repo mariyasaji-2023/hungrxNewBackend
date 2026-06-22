@@ -6,29 +6,34 @@ const Restaurant = require("../models/Restaurant");
 const SEARCHBOX_BASE = "https://api.mapbox.com/search/searchbox/v1";
 
 const CATEGORY_CUISINE_MAP = {
-  fast_food_restaurant:   "Fast Food",
-  coffee_shop:            "Coffee & Drinks",
-  pizza_restaurant:       "Pizza",
-  mexican_restaurant:     "Mexican",
-  chinese_restaurant:     "Chinese",
-  japanese_restaurant:    "Japanese",
-  italian_restaurant:     "Italian",
-  burger_restaurant:      "Burgers",
-  sandwich_restaurant:    "Sandwiches",
-  seafood_restaurant:     "Seafood",
-  steakhouse:             "Steakhouse",
-  bakery:                 "Bakery",
-  ice_cream_shop:         "Ice Cream",
-  bar:                    "Bar & Grill",
+  fast_food_restaurant:            "Fast Food",
+  fried_chicken_restaurant_chain:          "Fried Chicken",
+  iconic_fast_food_burger_fries_chain:     "Burgers & Fries",
+  coffee_shop:                     "Coffee & Drinks",
+  pizza_restaurant:                "Pizza",
+  mexican_restaurant:              "Mexican",
+  chinese_restaurant:              "Chinese",
+  japanese_restaurant:             "Japanese",
+  italian_restaurant:              "Italian",
+  burger_restaurant:               "Burgers",
+  sandwich_restaurant:             "Sandwiches",
+  seafood_restaurant:              "Seafood",
+  steakhouse:                      "Steakhouse",
+  bakery:                          "Bakery",
+  ice_cream_shop:                  "Ice Cream",
+  bar:                             "Bar & Grill",
 };
 
 // ── Mapbox Search Box helpers ──────────────────────────────────────────────
 
 const MAPBOX_CATEGORIES_1 =
-  "fast_food,burger_restaurant,sandwich,ice_cream,coffee_shop";
+  "fast_food,burger_restaurant,sandwich,ice_cream,coffee_shop,fried_chicken_restaurant_chain,iconic_fast_food_burger_fries_chain";
 
 const MAPBOX_CATEGORIES_2 =
   "pizza_restaurant,mexican_restaurant,chinese_restaurant,steakhouse";
+
+const MAPBOX_CATEGORIES_3 =
+  "japanese_restaurant,italian_restaurant,seafood_restaurant,bakery,bar,restaurant";
 
 async function fetchPOIGroup(lat, lon, categories, groupLabel) {
   const token = process.env.MAPBOX_TOKEN;
@@ -53,20 +58,25 @@ async function fetchPOIGroup(lat, lon, categories, groupLabel) {
 }
 
 async function fetchNearbyPOIs(lat, lon) {
-  const [group1, group2] = await Promise.all([
+  const [group1, group2, group3] = await Promise.all([
     fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_1, "Group1"),
     fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_2, "Group2"),
+    fetchPOIGroup(lat, lon, MAPBOX_CATEGORIES_3, "Group3"),
   ]);
+
+  const MAX_DISTANCE_M = 10_000; // 10 km
 
   const seen = new Set();
   const merged = [];
-  for (const f of [...group1, ...group2]) {
+  for (const f of [...group1, ...group2, ...group3]) {
+    const dist = f.properties?.distance;
+    if (typeof dist === "number" && dist > MAX_DISTANCE_M) continue;
     const id = f.properties?.mapbox_id || f.properties?.place_id || f.properties?.name;
     if (id && seen.has(id)) continue;
     if (id) seen.add(id);
     merged.push(f);
   }
-  console.log(`[Mapbox] Merged POIs: ${merged.length} (group1: ${group1.length}, group2: ${group2.length})`);
+  console.log(`[Mapbox] Merged POIs within 10 km: ${merged.length} (group1: ${group1.length}, group2: ${group2.length}, group3: ${group3.length})`);
   console.log("[Mapbox] All POI names:", merged.map(f => f.properties?.name ?? "unknown"));
   return merged;
 }
@@ -229,11 +239,11 @@ router.post("/nearby", authMiddleware, async (req, res) => {
     });
   }
 
-  limit = Math.min(Math.max(1, Number(limit) || 15), 30);
-  if (Number(req.body.limit) > 30) {
+  limit = Math.min(Math.max(1, Number(limit) || 15), 50);
+  if (Number(req.body.limit) > 50) {
     return res.status(400).json({
       success: false,
-      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 30." },
+      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 50." },
     });
   }
 

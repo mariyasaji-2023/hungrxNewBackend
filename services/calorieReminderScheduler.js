@@ -153,26 +153,4 @@ function msUntilNextUTC(hour, minute) {
   return next - now;
 }
 
-function startTestNotificationScheduler() {
-  const { sendCustomNotification } = require("./notificationService");
-
-  // 5:12 PM IST = 11:42 UTC
-  async function fireTestNotification() {
-    console.log("[TestNotification] Sending 5:12 PM IST notification to all users");
-    try {
-      const result = await sendCustomNotification({
-        title: "HungrX Test Notification 🔔",
-        body: "This is a test message from HungrX!",
-      });
-      console.log(`[TestNotification] Delivered: ${result.sent}/${result.total}`);
-    } catch (err) {
-      console.error("[TestNotification] Error:", err);
-    }
-    setTimeout(fireTestNotification, msUntilNextUTC(11, 42));
-  }
-
-  setTimeout(fireTestNotification, msUntilNextUTC(11, 42));
-  console.log("[TestNotification] Scheduler started — fires daily at 5:12 PM IST (11:42 UTC)");
-}
-
-module.exports = { startCalorieReminderScheduler, runCalorieReminders, startTestNotificationScheduler };
+module.exports = { startCalorieReminderScheduler, runCalorieReminders };
