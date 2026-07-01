@@ -46,15 +46,15 @@ async function sendNewRestaurantNotification(restaurant) {
 const MEAL_CONFIG = {
   breakfast: {
     title: "Good morning! 🌅",
-    body:  (kcal, name) => `You have ${kcal} kcal for today. Start your day with ${name}!`,
+    body:  (kcal) => `You have ${kcal} kcal remaining for today. Start your day right!`,
   },
   lunch: {
     title: "Lunch time! 🍱",
-    body:  (kcal, name) => `You have ${kcal} kcal left today. Try ${name} nearby!`,
+    body:  (kcal) => `You have ${kcal} kcal remaining for today. Time to refuel!`,
   },
   dinner: {
     title: "Dinner time! 🌙",
-    body:  (kcal, name) => `${kcal} kcal left for today. End the day right at ${name}!`,
+    body:  (kcal) => `You have ${kcal} kcal remaining for today. End the day strong!`,
   },
 };
 
@@ -67,7 +67,7 @@ async function sendMealReminderToUser(userId, remainingCalories, restaurant, mea
     type: "calorie_reminder",
     mealType,
     title: cfg.title,
-    body: cfg.body(remainingCalories, restaurant.restaurantName),
+    body: cfg.body(remainingCalories),
     remainingCalories: String(remainingCalories),
     suggestedRestaurantId: String(restaurant._id),
     suggestedRestaurantName: restaurant.restaurantName,

@@ -103,7 +103,7 @@ async function runCalorieReminders() {
       const consumed = foodLog
         ? foodLog.history.filter((e) => e.date === today).reduce((s, e) => s + e.kcal, 0)
         : 0;
-      const remaining = (user.nutritionGoals?.calories || 2000) - consumed;
+      const remaining = Math.round((user.nutritionGoals?.calories || 2000) - consumed);
       if (remaining <= 0) continue;
 
       for (const meal of activeMeals) {
