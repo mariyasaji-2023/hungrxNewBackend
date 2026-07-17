@@ -216,6 +216,30 @@ function decodeCursor(cursor) {
   }
 }
 
+function encodeAllCursor(name, id) {
+  return Buffer.from(JSON.stringify({ name, id })).toString("base64");
+}
+
+function decodeAllCursor(cursor) {
+  try {
+    const parsed = JSON.parse(Buffer.from(cursor, "base64").toString("utf8"));
+    if (typeof parsed.name !== "string" || typeof parsed.id !== "string") return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function compareRestaurantsAlpha(a, b) {
+  const an = (a.restaurantName || a.name || "").toLowerCase();
+  const bn = (b.restaurantName || b.name || "").toLowerCase();
+  if (an < bn) return -1;
+  if (an > bn) return 1;
+  const aId = a._id.toString();
+  const bId = b._id.toString();
+  return aId < bId ? -1 : aId > bId ? 1 : 0;
+}
+
 // ── POST /nearby ───────────────────────────────────────────────────────────
 
 router.post("/nearby", authMiddleware, async (req, res) => {
@@ -337,6 +361,73 @@ router.post("/nearby", authMiddleware, async (req, res) => {
     });
   } catch (error) {
     console.error("Nearby restaurants error:", error);
+    res.status(500).json({ success: false, message: "Failed to fetch restaurants" });
+  }
+});
+
+// ── GET /all ────────────────────────────────────────────────────────────────
+
+router.get("/all", authMiddleware, async (req, res) => {
+  const { cursor = null } = req.query;
+  let limit = parseInt(req.query.limit, 10);
+  if (isNaN(limit) || limit < 1) limit = 15;
+
+  if (Number(req.query.limit) > 30) {
+    return res.status(400).json({
+      success: false,
+      error: { code: "LIMIT_EXCEEDED", message: "limit must not exceed 30." },
+    });
+  }
+  limit = Math.min(limit, 30);
+
+  let cursorData = null;
+  if (cursor && cursor !== "null") {
+    cursorData = decodeAllCursor(cursor);
+    if (!cursorData) {
+      return res.status(400).json({
+        success: false,
+        error: { code: "INVALID_CURSOR", message: "The cursor value is invalid or expired." },
+      });
+    }
+  }
+
+  try {
+    const dbRestaurants = await Restaurant.find({}).lean();
+    const sorted = dbRestaurants.sort(compareRestaurantsAlpha);
+
+    let startIndex = 0;
+    if (cursorData) {
+      const pos = sorted.findIndex((r) => r._id.toString() === cursorData.id);
+      startIndex = pos === -1 ? 0 : pos + 1;
+    }
+
+    const page = sorted.slice(startIndex, startIndex + limit);
+    const hasMore = startIndex + limit < sorted.length;
+    const lastItem = page[page.length - 1];
+    const nextCursor = hasMore && lastItem
+      ? encodeAllCursor(lastItem.restaurantName || lastItem.name || "", lastItem._id.toString())
+      : null;
+
+    const restaurants = page.map((r) => ({
+      id:       r._id.toString(),
+      name:     r.restaurantName || r.name || "",
+      imageUrl: r.logo || r.imageUrl || "",
+      cuisine:  r.cuisine || "Restaurant",
+    }));
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        restaurants,
+        pagination: {
+          nextCursor,
+          hasMore,
+          total: sorted.length,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("All restaurants error:", error);
     res.status(500).json({ success: false, message: "Failed to fetch restaurants" });
   }
 });
