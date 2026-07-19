@@ -42,7 +42,8 @@ Content-Type: application/json
     },
     "planPreference": {
       "pace": "string"
-    }
+    },
+    "howDidYouHearAboutUs": "string (optional) — e.g. TikTok, Instagram, YouTube, Google, A Friend, or free text"
   },
   "meta": {
     "platform": "ios | android",

@@ -29,6 +29,8 @@ const userSchema = new mongoose.Schema(
       planPreference: {
         pace: { value: Number, unit: String }, // unit: "kg_per_week" | "lb_per_week"
       },
+
+      howDidYouHearAboutUs: { type: String }, // free text; fixed options enforced client-side only
     },
 
     // Subscription

@@ -93,6 +93,7 @@ router.post("/signup", async (req, res) => {
       planPreference: {
         pace: normalizePace(onboarding?.planPreference?.pace),
       },
+      howDidYouHearAboutUs: onboarding?.howDidYouHearAboutUs,
     };
 
     // Compute personalised nutrition goals from onboarding data
