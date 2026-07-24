@@ -82,6 +82,19 @@ async function sendCalorieReminderToUser(userId, remainingCalories, restaurant) 
   return sendMealReminderToUser(userId, remainingCalories, restaurant, "lunch");
 }
 
+async function sendTrialReminderToUser(userId) {
+  const tokens = await DeviceToken.find({ userId });
+  if (!tokens.length) return;
+
+  const data = {
+    type: "trial_reminder",
+    title: "Your free trial ends soon",
+    body: "Your 3-day trial ends tomorrow. Cancel anytime before then if it's not for you.",
+  };
+
+  await Promise.allSettled(tokens.map((t) => sendToToken(t, data)));
+}
+
 async function sendCustomNotification({ userId, title, body }) {
   const query = userId ? { userId } : {};
   const tokens = await DeviceToken.find(query);
@@ -94,4 +107,4 @@ async function sendCustomNotification({ userId, title, body }) {
   return { sent, total: tokens.length };
 }
 
-module.exports = { sendNewRestaurantNotification, sendMealReminderToUser, sendCalorieReminderToUser, sendCustomNotification };
+module.exports = { sendNewRestaurantNotification, sendMealReminderToUser, sendCalorieReminderToUser, sendTrialReminderToUser, sendCustomNotification };

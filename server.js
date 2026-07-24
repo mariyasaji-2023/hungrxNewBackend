@@ -47,13 +47,18 @@ app.use("/api/v1/user", userRoutes);
 const notificationRoutes = require("./routes/notification");
 app.use("/api/v1/notifications", notificationRoutes);
 
+const adminRoutes = require("./routes/admin");
+app.use("/api/v1/admin", adminRoutes);
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });
 
 const { startCalorieReminderScheduler } = require("./services/calorieReminderScheduler");
+const { startTrialReminderScheduler } = require("./services/trialReminderScheduler");
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
   startCalorieReminderScheduler();
+  startTrialReminderScheduler();
 });

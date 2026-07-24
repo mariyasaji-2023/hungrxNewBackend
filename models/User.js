@@ -44,6 +44,18 @@ const userSchema = new mongoose.Schema(
       subscriptionExpiry: { type: Date },
       cancelledAt:        { type: Date },
       store:              { type: String }, // APP_STORE | PLAY_STORE
+      promoCode: {
+        used:       { type: Boolean, default: false },
+        code:       { type: String },
+        redeemedAt: { type: Date },
+        expiresAt:  { type: Date }, // redeemedAt + 7 days
+      },
+      // RevenueCat annual-plan 3-day free trial (client-reported via /trial-started)
+      trial: {
+        startedAt:    { type: Date },
+        expiresAt:    { type: Date },
+        reminderSent: { type: Boolean, default: false },
+      },
     },
 
     // Nutrition Goals

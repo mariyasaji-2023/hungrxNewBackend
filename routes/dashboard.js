@@ -113,6 +113,8 @@ router.get("/", authMiddleware, async (req, res) => {
           subscriptionExpired: sub.subscriptionExpired ?? false,
           subscriptionPlan:    sub.plan || "free",
           trialDaysLeft,
+          isPromoUsed:         sub.promoCode?.used ?? false,
+          promoExpiry:         sub.promoCode?.expiresAt ?? null,
         },
         calories: {
           consumed: caloriesConsumed,
