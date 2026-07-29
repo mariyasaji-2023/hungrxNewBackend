@@ -4,7 +4,7 @@ const authMiddleware = require("../middleware/auth");
 const User = require("../models/User");
 const PromoCode = require("../models/PromoCode");
 
-const PROMO_ACCESS_MS = 7 * 24 * 60 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 router.post("/free-trial", authMiddleware, async (req, res) => {
   try {
@@ -76,7 +76,8 @@ router.post("/verify-promo", authMiddleware, async (req, res) => {
       return res.status(404).json({ valid: false, message: "User not found" });
     }
 
-    const expiresAt = new Date(redeemedAt.getTime() + PROMO_ACCESS_MS);
+    const accessDurationDays = promo.accessDurationDays || 7;
+    const expiresAt = new Date(redeemedAt.getTime() + accessDurationDays * DAY_MS);
 
     user.subscription = {
       ...(user.subscription || {}),
@@ -91,7 +92,7 @@ router.post("/verify-promo", authMiddleware, async (req, res) => {
 
     return res.status(200).json({
       valid:      true,
-      message:    "Promo code applied. Enjoy 7 days of full access!",
+      message:    `Promo code applied. Enjoy ${accessDurationDays} days of full access!`,
       expiresAt:  expiresAt.toISOString(),
     });
   } catch (error) {

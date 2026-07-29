@@ -18,7 +18,12 @@ function generateCode() {
 
 router.post("/promo-codes", adminAuth, async (req, res) => {
   try {
-    const { note } = req.body;
+    const { note, durationDays } = req.body;
+
+    const accessDurationDays = durationDays !== undefined ? Number(durationDays) : 7;
+    if (!Number.isInteger(accessDurationDays) || accessDurationDays <= 0) {
+      return res.status(400).json({ success: false, message: "durationDays must be a positive integer" });
+    }
 
     let code;
     for (let attempts = 0; attempts < 5; attempts++) {
@@ -35,13 +40,14 @@ router.post("/promo-codes", adminAuth, async (req, res) => {
     const createdAt = new Date();
     const codeExpiresAt = new Date(createdAt.getTime() + CODE_VALIDITY_MS);
 
-    const promo = await PromoCode.create({ code, note, createdAt, codeExpiresAt });
+    const promo = await PromoCode.create({ code, note, createdAt, codeExpiresAt, accessDurationDays });
 
     return res.status(200).json({
       success: true,
       code: promo.code,
       createdAt: promo.createdAt.toISOString(),
       codeExpiresAt: promo.codeExpiresAt.toISOString(),
+      accessDurationDays: promo.accessDurationDays,
     });
   } catch (error) {
     console.error("Generate promo code error:", error);
@@ -61,6 +67,7 @@ router.get("/promo-codes", adminAuth, async (req, res) => {
         note: c.note || "",
         createdAt: c.createdAt.toISOString(),
         codeExpiresAt: c.codeExpiresAt.toISOString(),
+        accessDurationDays: c.accessDurationDays,
         status: c.redeemedBy ? "redeemed" : now > c.codeExpiresAt ? "expired" : "unused",
         redeemedBy: c.redeemedBy ? { userId: c.redeemedBy._id, name: c.redeemedBy.name } : null,
         redeemedAt: c.redeemedAt ? c.redeemedAt.toISOString() : null,

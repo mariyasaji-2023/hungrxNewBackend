@@ -5,6 +5,7 @@ const promoCodeSchema = new mongoose.Schema({
   note:          { type: String },
   createdAt:     { type: Date, default: Date.now },
   codeExpiresAt: { type: Date, required: true },
+  accessDurationDays: { type: Number, required: true, default: 7 },
   redeemedBy:    { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
   redeemedAt:    { type: Date, default: null },
 });
