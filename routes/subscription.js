@@ -15,7 +15,7 @@ router.post("/free-trial", authMiddleware, async (req, res) => {
       return res.status(404).json({ success: false, message: "User not found" });
     }
 
-    const sub = user.subscription || {};
+    const sub = user.subscription?.toObject() || {};
 
     if (!sub.eligibleFreeTrail) {
       return res.status(400).json({ success: false, message: "User not eligible for free trial" });
@@ -80,7 +80,7 @@ router.post("/verify-promo", authMiddleware, async (req, res) => {
     const expiresAt = new Date(redeemedAt.getTime() + accessDurationDays * DAY_MS);
 
     user.subscription = {
-      ...(user.subscription || {}),
+      ...(user.subscription?.toObject() || {}),
       promoCode: {
         used:       true,
         code:       normalizedCode,
@@ -117,7 +117,7 @@ router.post("/trial-started", authMiddleware, async (req, res) => {
     }
 
     user.subscription = {
-      ...(user.subscription || {}),
+      ...(user.subscription?.toObject() || {}),
       trial: {
         startedAt,
         expiresAt,
