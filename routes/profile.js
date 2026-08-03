@@ -44,6 +44,8 @@ function buildProfileResponse(user) {
     activityLevel: ob.lifestyle?.activityLevel    ?? null,
     plan:          sub.plan                       || "free",
     trialDaysLeft: buildTrialDaysLeft(sub),
+    isPromoUsed:   sub.promoCode?.used             ?? false,
+    promoExpiry:   sub.promoCode?.expiresAt         ?? null,
   };
 }
 
