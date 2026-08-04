@@ -52,9 +52,9 @@ const userSchema = new mongoose.Schema(
       },
       // RevenueCat annual-plan 3-day free trial (client-reported via /trial-started)
       trial: {
-        startedAt:    { type: Date },
-        expiresAt:    { type: Date },
-        reminderSent: { type: Boolean, default: false },
+        startedAt:      { type: Date },
+        expiresAt:      { type: Date },
+        reminderSentAt: { type: Date, default: null },
       },
     },
 

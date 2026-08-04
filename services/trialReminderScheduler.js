@@ -2,7 +2,7 @@ const User = require("../models/User");
 const DeviceToken = require("../models/DeviceToken");
 const { sendTrialReminderToUser } = require("./notificationService");
 
-const CHECK_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
+const CHECK_INTERVAL_MS = 60 * 60 * 1000; // hourly
 const REMINDER_OFFSET_MS = 2 * 24 * 60 * 60 * 1000; // trialStartedAt + 2 days
 
 async function runTrialReminders() {
@@ -11,10 +11,10 @@ async function runTrialReminders() {
 
   try {
     const users = await User.find({
-      "subscription.trial.startedAt":    { $exists: true, $lte: startedBefore },
-      "subscription.trial.expiresAt":    { $gt: now },
-      "subscription.trial.reminderSent": { $ne: true },
-      "subscription.cancelledAt":        null,
+      "subscription.trial.startedAt":     { $exists: true, $lte: startedBefore },
+      "subscription.trial.expiresAt":     { $gt: now },
+      "subscription.trial.reminderSentAt": null,
+      "subscription.cancelledAt":         null,
       "subscription.subscriptionExpired": { $ne: true },
     }).lean();
 
@@ -23,8 +23,8 @@ async function runTrialReminders() {
     for (const user of users) {
       // Atomic claim so two overlapping runs can't both send it
       const claimed = await User.findOneAndUpdate(
-        { _id: user._id, "subscription.trial.reminderSent": { $ne: true } },
-        { $set: { "subscription.trial.reminderSent": true } }
+        { _id: user._id, "subscription.trial.reminderSentAt": null },
+        { $set: { "subscription.trial.reminderSentAt": new Date() } }
       );
       if (!claimed) continue;
 
@@ -40,7 +40,7 @@ async function runTrialReminders() {
 }
 
 function startTrialReminderScheduler() {
-  console.log("[TrialReminder] Scheduler started — checking every 15 minutes");
+  console.log("[TrialReminder] Scheduler started — checking hourly");
 
   runTrialReminders();
   setInterval(runTrialReminders, CHECK_INTERVAL_MS);

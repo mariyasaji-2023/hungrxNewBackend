@@ -121,7 +121,7 @@ router.post("/trial-started", authMiddleware, async (req, res) => {
       trial: {
         startedAt,
         expiresAt,
-        reminderSent: false,
+        reminderSentAt: null,
       },
     };
     await user.save();
