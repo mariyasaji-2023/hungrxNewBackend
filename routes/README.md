@@ -12,6 +12,7 @@ One router per feature, mounted in `server.js` under `/api/v1/<prefix>`. Handler
 | `/feedback` | feedback.js | Feedback |
 | `/restaurant-suggestions` | restaurantSuggestions.js | RestaurantSuggestion |
 | `/device` | device.js | DeviceToken, User |
+| `/restaurants/preview` | restaurantPreview.js | Restaurant (**public**, mounted before `/restaurants`) |
 | `/restaurants` | restaurants.js | Restaurant (+ Mapbox HTTP) |
 | `/webhooks` | webhooks.js | User |
 | `/support` | support.js | Support, User |
@@ -48,6 +49,12 @@ One router per feature, mounted in `server.js` under `/api/v1/<prefix>`. Handler
 - `GET /restaurants/all?limit≤30&cursor` — JWT. All DB restaurants alphabetical (in-memory sort/slice), cursor = last name+id. Returns `{id,name,imageUrl,cuisine}`. App.
 - `GET /restaurants/:restaurantId/menu?categoryIndex&limit≤100` — JWT. Maps nested categories via `mapCategories` (handles both flat and multilevel menus; `isMultilevel` flag), paginates by category index. Invalid ObjectId → 404. App.
 - Needs `MAPBOX_TOKEN`; without it Mapbox helpers log and return empty (nearby returns nothing).
+
+### restaurantPreview.js
+- `GET /restaurants/preview?kcal=1850` — **Public (no JWT)**, called by the Flutter onboarding Sneak Peek screen (`sneak_peek/sneak_peek_api.dart`; falls back to its static data on any failure; shown before signup). Returns only the fixed `FEATURED` list (McDonald's, Chipotle, Subway, Starbucks, Chick-fil-A, Shake Shack) in that order, matched to `restaurantName` with a loose case/punctuation-insensitive regex (`McDonalds` = `McDonald's`); restaurants not found in DB or without menu data are skipped. To change the demo set, edit `FEATURED`.
+- Response: `{ success, data:{ restaurants:[{ id, name, logo, cuisine, rating, fitKcal, categories:[{ name, items:[{ name, description, imageUrl, sizeLabel, kcal, protein, carbs, fat }] }] }] } }`. Uses each dish's first size with kcal > 0; subcategory items are flattened into the parent category; capped at 8 categories × 10 items.
+- `fitKcal`: with `?kcal=N` (1–10000, else 400) = highest-calorie dish ≤ N (null if none fits); without it = lowest-calorie dish. No distance (no location during onboarding).
+- Protection: per-IP rate limit 30 req/min (in-memory; 429 + `Retry-After`), result cached 10 min in memory (restart or wait to pick up DB edits), `Cache-Control: public, max-age=300`. `server.js` sets `trust proxy = 1` so `req.ip` is the real client behind the proxy. Because it is unauthenticated, keep the payload trimmed and never add user or private fields here.
 
 ### device.js
 - `POST /device/register-token` — JWT. Body `{ userId, token, platform: ios|android, timezone? }`. Deletes stale tokens (same user+platform other token; same token other user), upserts, stores `User.timezone`. Trusts body `userId`. App.

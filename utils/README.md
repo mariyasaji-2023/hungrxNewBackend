@@ -19,3 +19,6 @@ Only `nutrition.js` — pure functions, no I/O. Used by `routes/auth.js` (signup
 Input normalization maps snake_case / lowercase goal and activity strings (`lose_weight`, `very_active`, …) to canonical labels via `GOAL_NORMALIZE` / `ACTIVITY_NORMALIZE`; sex is capitalized. Canonical goals: "Lose weight", "Gain weight", "Gain muscle", "Maintain weight", "Maintain". Canonical activity: the four above.
 
 Gotchas: "Other" sex uses the male constant. No age/height/weight sanity validation. If you change the formula, existing users keep stored goals until they next edit their profile.
+
+## menuMapper.js
+Maps raw `Restaurant.categories` (schemaless, several shapes) to the API menu shape: `mapCategories(categories)` → `[{ name, subcategories:[{name,items}], items }]`, items `{ name, description, imageUrl, sizes:[{label,kcal,protein,carbs,fat}] }`. Handles `dishName|name`, `dishes|items`, `subCategories|subcategories`, `servingInfos|sizes`, drops empty/same-name wrapper subcategories. Used by `routes/restaurants.js` (menu endpoint) and `routes/restaurantPreview.js`. Change menu field handling here, once.

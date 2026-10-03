@@ -16,7 +16,7 @@ Users sign in with Firebase (Google/Apple), log restaurant dishes, track calorie
 | `models/` | Mongoose schemas → [models/README.md](models/README.md) |
 | `middleware/` | `auth.js` (user JWT), `adminAuth.js` (x-admin-key) → [middleware/README.md](middleware/README.md) |
 | `services/` | FCM sender + reminder schedulers → [services/README.md](services/README.md) |
-| `utils/nutrition.js` | Calorie/macro goal math → [utils/README.md](utils/README.md) |
+| `utils/` | `nutrition.js` calorie/macro goal math, `menuMapper.js` restaurant menu mapping → [utils/README.md](utils/README.md) |
 | `config/db.js`, `firebase.js` | Mongo connect, Firebase Admin init → [config/README.md](config/README.md) |
 | `script.js`, `olive_garden_migration.py` | One-off ops scripts (not part of the server) |
 | `API_DOCUMENTATION.md`, `API_TESTING.md` | Older human docs; **partly stale** (e.g. says `/foodlog/addFoodLog`; real route is `/food-log`). Trust the code. |
@@ -47,6 +47,7 @@ Startup calls `connectDB()` which `process.exit(1)` on failure. Schedulers start
 
 ## Domain notes
 - **Restaurants collection is schemaless** (`strict:false`) and pre-populated outside this API (migration scripts/Mongo). Menu shape: `categories[] → dishes[] | subCategories[].dishes[] → servingInfos[].servingInfo{size, Url, nutritionFacts{...}}`. Code defensively accepts alternate keys (`dishName|name`, `dishes|items`, `subcategories|subCategories`, `servingInfos|sizes`). No endpoint creates restaurants.
+- **Public preview** `GET /restaurants/preview` (no JWT, rate-limited, cached) feeds the Flutter pre-signup Sneak Peek screen with a fixed featured list.
 - **Nearby restaurants** = Mapbox Search Box POIs around lat/lon, name-matched (fuzzy prefix) against DB restaurants; only matches are returned.
 - **Subscriptions** have three overlapping mechanisms: legacy 7-day in-app trial (`/free-trial`), RevenueCat 3-day annual trial reported by client (`/trial-started`, drives trial reminder push), and admin-generated promo codes (`/admin/promo-codes` create, `/subscription/verify-promo` redeem). RevenueCat webhook sets `plan` pro/free.
 - **Nutrition goals** are computed server-side at signup and profile update (Mifflin-St Jeor + activity multiplier + pace; macros 30/45/25). See utils README.

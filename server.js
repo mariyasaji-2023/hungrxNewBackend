@@ -6,6 +6,7 @@ dotenv.config();
 connectDB(); // ← add this
 
 const app = express();
+app.set("trust proxy", 1); // behind nginx/DO proxy — makes req.ip the real client (rate limiting)
 app.use(express.json());
 
 const authRoutes = require("./routes/auth");
@@ -31,6 +32,10 @@ app.use("/api/v1/restaurant-suggestions", restaurantSuggestionRoutes);
 
 const deviceRoutes = require("./routes/device");
 app.use("/api/v1/device", deviceRoutes);
+
+// Public preview must be mounted before the JWT-protected restaurants router
+const restaurantPreviewRoutes = require("./routes/restaurantPreview");
+app.use("/api/v1/restaurants/preview", restaurantPreviewRoutes);
 
 const restaurantRoutes = require("./routes/restaurants");
 app.use("/api/v1/restaurants", restaurantRoutes);
