@@ -6,12 +6,12 @@ Users sign in with Firebase (Google/Apple), log restaurant dishes, track calorie
 ## Stack
 - Node.js, CommonJS (`require`), **Express 5**, **Mongoose 9** (MongoDB), `firebase-admin` (ID-token verification + FCM), `jsonwebtoken`, `uuid`, `dotenv`.
 - No tests, no linter, no TypeScript, no build step. `npm start` → `node server.js`.
-- Server listens on **hardcoded port 5000** (`server.js`). Production sits behind a proxy at `https://new.hungrx.xyz` (DigitalOcean). `API_TESTING.md` mentions `143.198.10.72:8080` (old/droplet).
+- Server listens on `process.env.PORT` (default **5000**; `server.js`). On macOS port 5000 is taken by AirPlay Receiver, so set `PORT=5001` locally. Production sits behind a proxy at `https://new.hungrx.xyz` (DigitalOcean). `API_TESTING.md` mentions `143.198.10.72:8080` (old/droplet).
 
 ## Layout (each dir has its own README.md)
 | Dir | Purpose |
 |---|---|
-| `server.js` | Entry: dotenv → `connectDB()` → mount routes under `/api/v1/*` → listen → start 2 schedulers |
+| `server.js` | Entry: dotenv → `connectDB()` → mount routes under `/api/v1/*` → listen on `PORT` → start 2 schedulers (unless `DISABLE_SCHEDULERS=true`) |
 | `routes/` | One Express router per feature. Handlers hold all business logic (no controller layer) → [routes/README.md](routes/README.md) |
 | `models/` | Mongoose schemas → [models/README.md](models/README.md) |
 | `middleware/` | `auth.js` (user JWT), `adminAuth.js` (x-admin-key) → [middleware/README.md](middleware/README.md) |
@@ -23,15 +23,16 @@ Users sign in with Firebase (Google/Apple), log restaurant dishes, track calorie
 
 ## Environment variables (`.env`, gitignored)
 `MONGO_URI`, `JWT_SECRET`, `ADMIN_API_KEY`, `MAPBOX_TOKEN`, `REVENUECAT_WEBHOOK_SECRET`.
+Optional: `PORT` (default 5000), `DISABLE_SCHEDULERS=true` (skips both reminder schedulers at boot — set it for any local run against a shared/prod DB; leave unset in production).
 Also needs `serviceAccountKey.json` at repo root (Firebase service account; gitignored). Note: the repo currently has a committed file named `serviceAccountKey.json.json` — `firebase.js` requires `./serviceAccountKey.json`, so on a fresh checkout it must be provided/renamed.
 
 ## Run locally
 ```
 npm install
 # create .env + serviceAccountKey.json
-npm start            # http://localhost:5000/api/v1/health
+npm start            # http://localhost:<PORT>/api/v1/health (default 5000)
 ```
-Startup calls `connectDB()` which `process.exit(1)` on failure. Schedulers start on boot and run an immediate check, so **a local server pointed at the prod DB will send real pushes** — use a separate DB for dev.
+Startup calls `connectDB()` which `process.exit(1)` on failure. Schedulers start on boot and run an immediate check, so **a local server pointed at the prod DB will send real pushes** unless `DISABLE_SCHEDULERS=true` is set (or use a separate dev DB).
 
 ## Request/response conventions
 - Base path `/api/v1`. JSON bodies. Responses: `{ success: true, data?, message? }` / `{ success: false, message }`.
@@ -69,7 +70,6 @@ Startup calls `connectDB()` which `process.exit(1)` on failure. Schedulers start
 - No rate limiting, CORS config, helmet, or body validation library.
 
 **Correctness / maintainability**
-- `jsonwebtoken` is imported but **not in package.json** (works only because `node_modules` is committed). Fresh `npm install` after untracking `node_modules` would break auth.
 - `node_modules/` is committed to git despite being in `.gitignore`.
 - `User.profileUrl` is returned by `/auth/login` but the schema field is `photoUrl` → always undefined.
 - `nutrition.js` imperial handling: `/profile` PUT stores height as **feet** value with unit `ft` and converts `×30.48` (decimal feet), weights `lbs`. `toMetric` uses the same assumption. Metric fields are named `heightCm`/`weightKg` even when imperial.
@@ -83,4 +83,4 @@ Startup calls `connectDB()` which `process.exit(1)` on failure. Schedulers start
 ## Working agreements
 - Match existing style: CommonJS, 2-space indent, `try/catch` per handler with `console.error` and a generic 500 message.
 - Prefer atomic Mongo updates (`findOneAndUpdate` with a condition) for anything that must happen once (promo redeem, reminders).
-- Don't point dev at production Mongo; schedulers will send real pushes.
+- Don't point dev at production Mongo; if you must, set `DISABLE_SCHEDULERS=true` so schedulers don't send real pushes.

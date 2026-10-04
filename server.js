@@ -59,11 +59,16 @@ app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ success: true, message: "Server is running" });
 });
 
+const PORT = process.env.PORT || 5000;
 const { startCalorieReminderScheduler } = require("./services/calorieReminderScheduler");
 const { startTrialReminderScheduler } = require("./services/trialReminderScheduler");
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-  startCalorieReminderScheduler();
-  startTrialReminderScheduler();
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  if (process.env.DISABLE_SCHEDULERS === "true") {
+    console.log("Schedulers disabled (DISABLE_SCHEDULERS=true)");
+  } else {
+    startCalorieReminderScheduler();
+    startTrialReminderScheduler();
+  }
 });
