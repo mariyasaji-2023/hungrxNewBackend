@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { v4: uuidv4 } = require("uuid");
+const { randomUUID } = require("crypto");
 const authMiddleware = require("../middleware/auth");
 const FoodLog = require("../models/FoodLog");
 
@@ -15,7 +15,7 @@ router.post("/", authMiddleware, async (req, res) => {
     const today = new Date().toISOString().split("T")[0];
 
     const entry = {
-      id: `log_${uuidv4().replace(/-/g, "").slice(0, 9)}`,
+      id: `log_${randomUUID().replace(/-/g, "").slice(0, 9)}`,
       restaurantId:    restaurantId    ?? "",
       restaurantName:  restaurantName  ?? "",
       restaurantEmoji: restaurantEmoji ?? "🍽️",
